@@ -13,6 +13,7 @@
 	
 	<jsp:include page="include/cssimport.jsp" />
 	
+	
 </head>
 
 <body class="body-wrapper">
@@ -25,22 +26,16 @@
 =            Hero Area            =
 ================================-->
 
-<section class="hero-area bg-1 text-center overly">
+
 	<!-- Container Start -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<!-- Header Contetnt -->
-				<div class="content-block">
-					
-				</div>
-				
-				
-			</div>
-		</div> 
-	</div>
+	<section class="section">
+		<div class="fotorama" data-autoplay="true" style=" max-width: 100%; height: auto;">
+			<img src="${path}/resources/images/home/hero.jpg">
+		  	<img src="${path}/resources/images/home/hero.jpg">
+		  	<img src="${path}/resources/images/home/hero.jpg">
+		</div>
+	</section>
 	<!-- Container End -->
-</section>
 
 <!--===========================================
 =            Popular deals section            =
@@ -48,11 +43,13 @@
 
 <section class="popular-deals section bg-gray">
 	<div class="container">
+	
+	
 		<div class="row">
 			<div class="col-md-12">
 				<div class="section-title">
-					<h2>어트랙션 소개</h2>
-					<p>어쩌구저쩌구 놀이공원의 어트랙션을 소개합니다.</p>
+					<h2>이벤트</h2>
+					<p>오늘의 이벤트와 공지사항을 확인하세요.</p>
 				</div>
 			</div>
 		</div>
@@ -60,6 +57,7 @@
 			<!-- offer 01 -->
 			<div class="col-sm-12 col-lg-4">
 				<!-- product card -->
+				
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
@@ -175,7 +173,7 @@
 	<div class="">
 		<header class="align-center">
 			<p>할인 어쩌구 꾸밈텍스트 예매하러 바로 가기</p>
-			<h2><a class="ticket-button" style="color: #dedede;" href="#">
+			<h2><a class="ticket-button" style="color: #dedede;" href="${ path }/ticket/reservation">
 					지금 티켓 구매
 			</a></h2>
 		</header>
