@@ -29,7 +29,7 @@
 			
   <!-- content-->  
   <article>
-    <!-- Search Widget -->
+    <!-- Search Widget
     <div class="container">
       <div class="container3">
       <div class="widget search p-0">
@@ -40,7 +40,7 @@
       </div>
       </div>
     </div>
-
+ -->
 
       <div class="container">
         <header class="section background-dark">
@@ -55,30 +55,30 @@
 
 <!--Attraction List -->
 <section>
- <div class="container  ">
+ <div class="container ">
 
 <div id="attraction image container">
   <div class="line">
         <div class="tab-content">
           <div class="margin">
-            <div class="s-12 m-6 l-3"><a class="our-work-container lightbox margin-bottom" href="attractionDetail.html">
-            	<div class="our-work-text"><h4>어트랙션 이름</h4><p>Laoreet dolore magna aliquam erat volutpat.</p></div>
-            	<img src="${path}/resources/images/Attractionimg/por1.jpg" alt=""></a>
-            </div>
             
-            <div class="s-12 m-6 l-3"><a class="our-work-container lightbox margin-bottom" href="attractionDetail.html">
-            	<div class="our-work-text"><h4>어트랙션 이름</h4><p>Laoreet dolore magna aliquam erat volutpat.</p></div>
-            	<img src="${path}/resources/images/Attractionimg/por1.jpg" alt=""></a>
-            </div>
+            <c:forEach var="attraction" items="${ attractions }">
+            	
+            	<div class="s-12 m-6 l-3">
+            		<a class="our-work-container lightbox margin-bottom"  href="attractionDetail/${ attraction.attractionNo}" >
+              			<div class="our-work-text">
+              				<h4>${ attraction.attractionName }</h4>
+              				
+              			</div>
+            		<img class="card-img-top img-fluid" 
+             			 src="${path}/resources/uploadFile/nullImage.jpg"
+            		>
+            		<!-- src="/resources/uploadFile/${ attraction.attractionImage }" > -->
+            			
+            		</a>
+            	</div>
+           	</c:forEach>
             
-            <div class="s-12 m-6 l-3"><a class="our-work-container lightbox margin-bottom" href="attractionDetail.html">
-            	<div class="our-work-text"><h4>어트랙션 이름</h4><p>Laoreet dolore magna aliquam erat volutpat.</p></div>
-            	<img src="${path}/resources/images/Attractionimg/por1.jpg" alt=""></a>
-            </div>
-            
-            <div class="s-12 m-6 l-3"><a class="our-work-container lightbox margin-bottom" href="attractionDetail.html">
-            	<div class="our-work-text"><h4>어트랙션 이름</h4><p>Laoreet dolore magna aliquam erat volutpat.</p></div>
-            	<img src="${path}/resources/images/Attractionimg/por1.jpg" alt=""></a>
             </div>
             
           </div>

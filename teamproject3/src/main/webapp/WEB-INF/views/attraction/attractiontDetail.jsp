@@ -26,26 +26,34 @@
 			<div class="col-md-12">
 
 <article>
-    <div class="container">
+<div class="container">
       <header class="section background-dark">
         <div class="line">        
-          <h1 class="Detail Page Title" style="font-size: 45px;">AttractionName- 어트랙션 디테일 페이지</h1>
+          <h1 class="Detail Page Title" style="font-size: 45px;">
+          	${ attraction.attractionName }
+          </h1>
           <p class="margin-bottom-0 text-size-16">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.<br>
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.</p>
         </div>  
+     
       </header>
-    </div>
+	
+        <img class="AttractionContentimg" src="${ attraction.attractionImage }" />
+      <div class="Detail contentArea">
+        ${ attraction.attractionContent }
+      </div>
+      
+      
+      
+</div>
 </article>
-
+ </div>
 <div class="container">
     <div class="margin-bottom-15">
 
-    </div>
-        <img class="AttractionContentimg" src="images/pic01.jpg" />
-      <div class="Detail contentArea">
-        콘텐츠 작성할 부분
-      </div>
-
+    <div style="margin:auto; text-align: center;">
+	<a href="/controller/attractionDelete/${ attraction.attractionNo }" class="btn btn-transparent">삭제하기</a>
+	</div>
 
 </div>
 

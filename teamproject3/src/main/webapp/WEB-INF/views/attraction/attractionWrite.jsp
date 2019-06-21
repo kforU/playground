@@ -37,17 +37,18 @@
       <!-- Current Password -->
       <div class="form-group" >
         <label for="thumbnail" >어트랙션 이름</label>
-        <input type="text" class="form-control" id="QnAtitle">
+        <input type="text" class="form-control" id="QnAtitle" name="attractionName">
       </div>
 
       <div class="form-group" >
         <label for="thumbnail">썸네일을 첨부해주세요</label>
-        <input type="file" name="attach">
+        <input type="file" name="attach" id="uploadImg">
+        <div class="select_img"><img src="" /></div>
       </div>
 
       <div class="form-group">
         <label for="Attractioncontent">글 작성하기</label>
-        <textarea class="textArea" rows="6" id="smarteditor" name="content" style="width: 100%">
+        <textarea class="textArea" rows="6" id="smarteditor" name="attractionContent" style="width: 100%" >
         </textarea>
       </div>
 
@@ -73,6 +74,16 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="${ path }/resources/annNavereditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type='text/javascript'>
+	$("#uploadImg").change(function(){
+		   if(this.files && this.files[0]) {
+		    var reader = new FileReader;
+		    reader.onload = function(data) {
+		     $(".select_img img").attr("src", data.target.result).width(500);        
+		    }
+		    reader.readAsDataURL(this.files[0]);
+		   }
+		  });
+
 $(function(){
     //전역변수선언
     var editor_object = [];

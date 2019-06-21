@@ -12,7 +12,7 @@
 	<title>Calssimax</title>
 	
 	<jsp:include page="include/cssimport.jsp" />
-	
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" />
 	
 </head>
 
@@ -49,123 +49,128 @@
 			<div class="col-md-12">
 				<div class="section-title">
 					<h2>이벤트</h2>
-					<p>오늘의 이벤트와 공지사항을 확인하세요.</p>
+					<p>오늘의 이벤트를 확인하세요.</p>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<!-- offer 01 -->
-			<div class="col-sm-12 col-lg-4">
-				<!-- product card -->
-				
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="">
-				<img class="card-img-top img-fluid" src="${path}/resources/images/products/products-1.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
-		    </ul>
-		    <p class="card-text">텍스트 변경</p>
-		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
-		    </div>
-		</div>
-	</div>
-</div>
+		
+		<ul class="bx">
+	<li class="listyle">
+				<!-- offer 01 -->
 
-
-
+					<!-- product card -->
+	<div class="product-item bg-light">
+		<div class="card">
+			<div class="thumb-content">
+				<!-- <div class="price">$200</div> -->
+				<a href="">
+					<img class="card-img-top img-fluid" src="${path}/resources/images/products/products-1.jpg" alt="Card image cap">
+				</a>
 			</div>
-			<div class="col-sm-12 col-lg-4">
-				<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="">
-				<img class="card-img-top img-fluid" src="${ path }/resources/images/products/products-2.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="">Full Study Table Combo</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-folder-open-o"></i>Furnitures</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
-		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
-		    </div>
-		</div>
-	</div>
-</div>
-
-
-
-</div>
-<div class="col-sm-12 col-lg-4">
-<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="">
-				<img class="card-img-top img-fluid" src="${ path }/resources/images/products/products-3.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
-		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
-		    </div>
-		</div>
-	</div>
-</div>
-
+			<div class="card-body">
+			    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
+			    <ul class="list-inline product-meta">
+			    	<li class="list-inline-item">
+			    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
+			    	</li>
+			    	<li class="list-inline-item">
+			    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
+			    	</li>
+			    </ul>
+			    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 			</div>
 		</div>
+	</div>
+
+	</li>
+	<li class="listyle">
+				<!-- offer 01 -->
+
+					<!-- product card -->
+	<div class="product-item bg-light">
+		<div class="card">
+			<div class="thumb-content">
+				<!-- <div class="price">$200</div> -->
+				<a href="">
+					<img class="card-img-top img-fluid" src="${path}/resources/images/products/products-1.jpg" alt="Card image cap">
+				</a>
+			</div>
+			<div class="card-body">
+			    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
+			    <ul class="list-inline product-meta">
+			    	<li class="list-inline-item">
+			    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
+			    	</li>
+			    	<li class="list-inline-item">
+			    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
+			    	</li>
+			    </ul>
+			    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
+			</div>
+		</div>
+	</div>
+
+	</li>
+	<li class="listyle">
+				<!-- offer 01 -->
+
+					<!-- product card -->
+	<div class="product-item bg-light">
+		<div class="card">
+			<div class="thumb-content">
+				<!-- <div class="price">$200</div> -->
+				<a href="">
+					<img class="card-img-top img-fluid" src="${path}/resources/images/products/products-1.jpg" alt="Card image cap">
+				</a>
+			</div>
+			<div class="card-body">
+			    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
+			    <ul class="list-inline product-meta">
+			    	<li class="list-inline-item">
+			    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
+			    	</li>
+			    	<li class="list-inline-item">
+			    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
+			    	</li>
+			    </ul>
+			    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
+			</div>
+		</div>
+	</div>
+
+	</li>
+	<li class="listyle">
+				<!-- offer 01 -->
+
+					<!-- product card -->
+	<div class="product-item bg-light">
+		<div class="card">
+			<div class="thumb-content">
+				<!-- <div class="price">$200</div> -->
+				<a href="">
+					<img class="card-img-top img-fluid" src="${path}/resources/images/products/products-1.jpg" alt="Card image cap">
+				</a>
+			</div>
+			<div class="card-body">
+			    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
+			    <ul class="list-inline product-meta">
+			    	<li class="list-inline-item">
+			    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
+			    	</li>
+			    	<li class="list-inline-item">
+			    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
+			    	</li>
+			    </ul>
+			    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
+			</div>
+		</div>
+	</div>
+
+	</li>
+</ul>
+		
+		
+		
 	</div>
 </section>
 
@@ -193,7 +198,7 @@
 			<div class="col-12">
 				<!-- Section title -->
 				<div class="section-title">
-					<h2>All Categories</h2>
+					<h2>어트랙션 바로가기</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
 				</div>
 				<div class="row">
@@ -338,6 +343,18 @@
 <jsp:include page="include/footer.jsp" />
 
 <jsp:include page="include/jsimport.jsp" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+<script>
+  var bx = $(".bx").bxSlider({
+    minSlides: 1, //Value should match moveSlides value
+    moveSlides: 1, //Value should match minSlides value
+    maxSlides: 4, //Make total slides a numerator of this number
+    slideWidth: 320, //Required for horizontal carousel
+    slideMargin: 5,
+    shrinkItems: true // Recalculates and adjusts when resized
+  });
+  </script>
 
 </body>
 
