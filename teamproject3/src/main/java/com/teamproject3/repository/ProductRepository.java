@@ -9,6 +9,8 @@ public interface ProductRepository {
 	
 	List<Product> selectAllProduct();	// 상품 목록
 	
+	List<Product> selectToyProduct();
+	
 	List<Product> selectAllProductImage(int productNo);
 	
 	Product selectOneProductNo(int productNo);
@@ -20,5 +22,16 @@ public interface ProductRepository {
 	void deleteProduct(int productNo);	// 상품 삭제
 	
 	void deleteProductImage(int productNo);
+	
+	List<Product> searchProductByName(String search);
+
+	List<Product> selectWearProduct();
+
+	List<Product> selectPhrasesProduct();
+
+	List<Product> selectApplianceProduct();
+
+	List<Product> selectAccessoryProduct();
+
 	
 }

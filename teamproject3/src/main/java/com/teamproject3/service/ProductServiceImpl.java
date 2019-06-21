@@ -26,6 +26,41 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public List<Product> findToyProduct() {
+		
+		List<Product> products = productRepository.selectToyProduct();
+		return products;
+	}
+	
+	@Override
+	public List<Product> findWearProduct() {
+		
+		List<Product> products = productRepository.selectWearProduct();
+		return products;
+	}
+
+	@Override
+	public List<Product> findPhrasesProduct() {
+
+		List<Product> products = productRepository.selectPhrasesProduct();
+		return products;
+	}
+
+	@Override
+	public List<Product> findApplianceProduct() {
+
+		List<Product> products = productRepository.selectApplianceProduct();
+		return products;
+	}
+
+	@Override
+	public List<Product> findAccessoryProduct() {
+
+		List<Product> products = productRepository.selectAccessoryProduct();
+		return products;
+	}
+	
+	@Override
 	public List<Product> findAllProductImage(int ProductNo) {
 		// TODO Auto-generated method stub
 		return null;
@@ -69,4 +104,13 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
+	@Override
+	public List<Product> searchProductByName(String search) {
+	
+		search = "%" + search + "%";
+		List<Product> searchProduct = productRepository.searchProductByName(search);
+		
+		return searchProduct;
+	}
+	
 }

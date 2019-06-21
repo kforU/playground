@@ -109,7 +109,7 @@
 															<div class="thumb-content">
 																<a href="productDetail/${ product.productNo }">
 																	<img class="card-img-top img-fluid"
-																		 src="${ path }/resources/images/tmp/${ product.productImage }"
+																		 src="resources/images/tmp/${ product.productImage }"
 																		 alt="Card image cap"
 																		 style="height: 200px">
 																</a>
