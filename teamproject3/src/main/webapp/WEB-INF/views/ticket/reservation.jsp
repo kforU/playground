@@ -14,7 +14,7 @@
   <title>Calssimax</title>
   
   <jsp:include page="../include/cssimport.jsp" />
-
+	
 </head>
 
 <body class="body-wrapper">
@@ -23,7 +23,7 @@
 
 <jsp:include page="../include/side.jsp" />
 
-<section class="popular-deals section bg-gray">
+<section class="dashboard section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -35,7 +35,9 @@
 						
 			</form>
 			
+			<section class="container">
 			<h1> 티켓 예매 </h1>
+			
 			
 			  <div class="row">
 			    <article class="onedaycard ">
@@ -187,18 +189,18 @@
 				
 				
 					<div id="sec_tab01" class="tabCont on" style="display: block;">
-						<!-- class="on" 기본 보여지는 화면 --><img alt="" class="w100" src="/controller/resources/images/201703024ab0394260d04693b53f83046f41f6ad.png">
+						<!-- class="on" 기본 보여지는 화면 --><img alt="" class="w100" src="/playground/resources/images/201703024ab0394260d04693b53f83046f41f6ad.png">
 					<div class="pd5">
 					<p class="tit_info mgb20">모험과 신비의 나라&nbsp;CLASSIMAX 어드벤처</p>
-					<img alt="" src="/controller/resources/images/20170302bdc830a62ab64b958838279fc4de6cd8.png">
+					<img alt="" src="/playground/resources/images/20170302bdc830a62ab64b958838279fc4de6cd8.png">
 					<p class="mgb20">다채로운 놀이시설, 실내 어드벤처</p>
-					<img alt="" src="/controller/resources/images/201703028ba285edb4834632baa4e389cd07729f.png">
+					<img alt="" src="/playground/resources/images/201703028ba285edb4834632baa4e389cd07729f.png">
 					<p class="mgb20">스릴이 가득한, 매직아일랜드</p>
 					
 					<h2>운영시간 안내</h2>
 					
 					<div class="price_table">
-					<table>
+					<table class="table table-bordered product-table">
 						<caption>운영시간 안내</caption>
 						<colgroup>
 							<col width="40%">
@@ -239,9 +241,9 @@
 					<img alt="" class="mgb10" src="/simgs/display/1210/upload/20170302011a5eec0e5449babf38eca808073db2">
 					<h2>이용요금 안내</h2>
 					
-					<div class="price_table mgb10">
+					<div class="table table-bordered product-table">
 					<table>
-						<caption>이용요금</caption>
+						
 						<colgroup>
 							<col width="10%">
 							<col width="*">
@@ -325,9 +327,9 @@
 						<li>3. 해당 티켓은 재판매가 불가능합니다.</li>
 						<li>4. 방문날짜 및 권종 수정이 불가능합니다. 예매를 취소하신 뒤 재구매 해주시기 바랍니다.</li>
 					</ul>
-					</div>
+				</div>
 					
-										</div>
+			</div>
 							
 					<div id="#sec_tab03" class="tabCont" style="display: none;">
 					
