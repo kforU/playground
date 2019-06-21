@@ -19,3 +19,5 @@
   <script src="${ path }/resources/plugins/fancybox/jquery.fancybox.pack.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
   <script src="${ path }/resources/js/scripts.js"></script>
+  <script src="${ path }/resources/js/imageSlider.js"></script>
+  

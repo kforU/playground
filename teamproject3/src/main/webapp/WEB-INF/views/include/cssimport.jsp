@@ -18,6 +18,7 @@
   <!-- CUSTOM CSS -->
   <link href="${ path }/resources/css/style.css" rel="stylesheet">
   <link href="${ path }/resources/css/block.css" rel="stylesheet">
+   <link href="${ path }/resources/css/imageSlider.css" rel="stylesheet">
 
   <!-- FAVICON -->
   <link href="${ path }/resources/img/favicon.png" rel="shortcut icon">
