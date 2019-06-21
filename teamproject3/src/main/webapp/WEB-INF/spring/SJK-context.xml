@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="productRepository"
+		  class="com.teamproject3.repository.ProductRepositoryImpl">
+		<property name="sessionTemplate" ref="sqlSessionTemplate" />
+		<property name="productMapper" ref="productMapper" />	  
+	</bean>
+
+	<bean id="productService"
+		  class="com.teamproject3.service.ProductServiceImpl">
+		<property name="productRepository" ref="productRepository" />
+	</bean>
+
+	<bean id="productMapper"
+		  class="org.mybatis.spring.mapper.MapperFactoryBean"> 
+		<property name="mapperInterface"
+				  value="com.teamproject3.mapper.ProductMapper" />
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+	</bean>
+
+	<bean id="multipartResolver" 
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- maximum file size in bytes 50MB -->
+		<property name="maxUploadSize" value="52428800" />
+	</bean>
+
+</beans>

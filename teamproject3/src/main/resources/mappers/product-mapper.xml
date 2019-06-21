@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teamproject3.mapper.ProductMapper">
+
+	<select id="selectAllProduct" 
+			resultType="com.teamproject3.vo.Product">
+		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
+		FROM PRODUCT
+		WHERE deleted = '0'
+		ORDER BY productNo DESC
+	</select>
+
+	<select id="selectOneProductNo"
+			parameterType="int"
+			resultType="com.teamproject3.vo.Product">
+		SELECT productNo, productName, productContent, productCount, productPrice, productImage, productCategory, regDate
+		FROM PRODUCT
+		WHERE PRODUCTNO = #{ productNo } AND DELETED = '0'
+	</select>
+
+	<insert id="insertProduct"
+			parameterType="com.teamproject3.vo.Product"
+			useGeneratedKeys="true"
+			keyColumn="productNo"
+			keyProperty="productNo">
+		INSERT INTO PRODUCT (PRODUCTNO, PRODUCTNAME, PRODUCTPRICE, PRODUCTCOUNT, PRODUCTIMAGE, PRODUCTCATEGORY, PRODUCTCONTENT)
+		VALUES (PRODUCT_SEQUENCE.NEXTVAL, #{ productName }, #{ productPrice }, #{ productCount }, #{ productImage }, #{ productCategory }, #{ productContent })
+	</insert>
+
+	<update id="updateProduct"
+			parameterType="com.teamproject3.vo.Product">
+		<if test="productImage == null">
+		UPDATE PRODUCT
+		SET PRODUCTNAME = #{ productName },
+			PRODUCTPRICE = #{ productPrice},
+			PRODUCTCOUNT = #{ productCount},
+			PRODUCTCATEGORY = #{ productCategory},
+			PRODUCTCONTENT = #{ productContent}
+		WHERE PRODUCTNO = #{ productNo }
+		</if>
+		<if test="productImage != null">
+			UPDATE PRODUCT
+			SET PRODUCTNAME = #{ productName },
+				PRODUCTPRICE = #{ productPrice},
+				PRODUCTCOUNT = #{ productCount},
+				PRODUCTCATEGORY = #{ productCategory},
+				PRODUCTCONTENT = #{ productContent},
+				PRODUCTIMAGE = #{ productImage }
+			WHERE PRODUCTNO = #{ productNo }
+		</if>
+	</update>
+	
+	<update id="deleteProduct"
+			parameterType="int">
+		UPDATE PRODUCT
+		SET DELETED = '1'
+		WHERE PRODUCTNO = #{ productNo }
+	</update>
+
+	<update id="deleteProductImage"
+			parameterType="int">
+		UPDATE PRODUCT
+		SET PRODUCTIMAGE = NULL
+		WHERE PRODUCTNO = #{ productNo }
+	</update>
+
+</mapper>

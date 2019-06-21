@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teamproject3.mapper.TicketOrderMapper">
+
+	<select id="selectAll" resultType="TicketOrder">
+	
+		SELECT *
+		FROM (
+			SELECT ROWNUM AS RN, A.*
+			FROM (
+				SELECT *
+				FROM TICKETORDER
+				WHERE <include refid="search"/>
+				ORDER BY TICKETORDERNO DESC
+			)A
+		) WHERE RN BETWEEN #{start} AND #{end}
+
+	</select>
+	
+	<sql id="search">
+	
+		<choose>
+			<when test="searchOption == 'email'">
+				EMAIL LIKE '%' || #{searchValue} || '%'
+			</when>
+			<when test="searchOption == 'ticketNo'">
+				TICKETNO LIKE '%' || #{searchValue} || '%'
+			</when>
+			<otherwise>
+				EMAIL LIKE '%' || #{searchValue} || '%' OR
+				TICKETNO LIKE '%' || #{searchValue} || '%'
+			</otherwise>
+		</choose>
+	
+	</sql>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*)
+		FROM TICKETORDER
+		WHERE <include refid="search" />
+	</select>
+	
+	<update id="approveTicket" parameterType="int">
+		UPDATE TICKETORDER
+		SET
+			APPROVAL = '1'
+		WHERE TICKETORDERNO = #{ticketOrderNo}
+	</update>
+	
+	<select id="selectAllTicket" resultType="com.teamproject3.vo.Ticket">
+		SELECT *
+		FROM TICKET
+		ORDER BY TICKETNO
+	</select>
+	
+	<insert id="insertTicketOrder" parameterType="com.teamproject3.vo.TicketOrder">
+		INSERT INTO TICKETORDER (TICKETORDERNO, TICKETNO, TICKETORDERCOUNT, EMAIL)
+		VALUES(TICKETORDER_SEQUENCE.NEXTVAL, #{ ticketNo }, #{ ticketOrderCount }, #{ email })
+	</insert>
+
+</mapper>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teamproject3.mapper.AnnounceMapper">
+
+<insert id="insertAnnounce" parameterType="com.teamproject3.vo.Announcement"
+		useGeneratedKeys="true" keyColumn="announcementNo" keyProperty="announcementNo">
+		INSERT INTO ANNOUNCEMENT (ANNOUNCEMENTNO, ANNOUNCETITLE, EMAIL, CATEGORY, ANNOUNCEIMAGE ,ANNOUNCEMENTCONTENT )
+								
+		VALUES (ANNOUNCEMENT_SEQUENCE.NEXTVAL, 
+				#{ announceTitle }, 
+				#{ email },
+				#{ category }, 
+				#{ announceImage },
+				#{ announcementContent })
+				
+	
+</insert>
+
+<insert id="insertAttachment" parameterType="com.teamproject3.vo.AnnouncementAttachment">
+	INSERT INTO ANNATTACHMENT (ANNATTACHMENTNO, ANNATTACHMENTMEDIATYPE, 
+								ANNATTACHMENTFILEURL,ANNOUNCEMENTNO)
+	VALUES (ANNATTACHMENT_SEQUENCE.NEXTVAL, #{ annAttachmentMediaType }, #{ annAttachmentFileUrl },
+			#{ announcementNo } )
+
+</insert>
+
+<select id="selectAllAnnounce" resultType="com.teamproject3.vo.Announcement">
+	SELECT ANNOUNCEMENTNO, ANNOUNCETITLE, REGDATE, CATEGORY, ANNOUNCEIMAGE
+	FROM ANNOUNCEMENT
+	WHERE DELETED = '0'
+	ORDER BY ANNOUNCEMENTNO DESC 
+</select>
+
+<select id="selectOneAnnounce" resultType="com.teamproject3.vo.Announcement">
+	SELECT ANNOUNCEMENTNO ,ANNOUNCETITLE, CATEGORY, REGDATE, ANNOUNCEMENTCONTENT
+	FROM ANNOUNCEMENT
+	WHERE ANNOUNCEMENTNO= #{ ANNOUNCEMENTNO } AND DELETED = '0'
+</select>
+
+<select id="selectOneAttachment" resultType="com.teamproject3.vo.AnnouncementAttachment">
+	SELECT ANNATTACHMENTNO, ANNOUNCEMENTNO , ANNATTACHMENTMEDIATYPE, ANNATTACHMENTFILEURL
+	FROM ANNATTACHMENT
+	WHERE ANNOUNCEMENTNO= #{ ANNOUNCEMENTNO }
+</select>
+
+<update id="delete" parameterType="int">
+	UPDATE ANNOUNCEMENT
+	SET DELETED = '1'
+	WHERE ANNOUNCEMENTNO = #{ announcementNo }
+</update>
+
+<select id="selectAttachment" resultType="com.teamproject3.vo.AnnouncementAttachment"
+		parameterType="int">
+	SELECT ANNATTACHMENTNO, ANNATTACHMENTMEDIATYPE, ANNATTACHMENTFILEURL, ANNOUNCEMENTNO
+	FROM ANNATTACHMENT
+	WHERE ANNATTACHMENTNO = #{ annAttachmentNo }	
+
+</select>
+
+<delete id="deleteAttach" parameterType="int">
+	DELETE FROM ANNATTACHMENT
+	WHERE ANNATTACHMENTNO = #{ annAttachmentNo }
+</delete>
+
+<update id="update" parameterType="com.teamproject3.vo.Announcement">
+	UPDATE ANNOUNCEMENT
+	SET ANNOUNCETITLE = #{ announceTitle }
+	, CATEGORY = #{ category }
+	, ANNOUNCEMENTCONTENT = #{ announcementContent }
+	WHERE ANNOUNCEMENTNO = #{ announcementNo }
+</update>
+
+<insert id="insertNotFile" parameterType="com.teamproject3.vo.Announcement"
+		useGeneratedKeys="true" keyColumn="announcementNo" keyProperty="announcementNo">
+		INSERT INTO ANNOUNCEMENT (ANNOUNCEMENTNO, ANNOUNCETITLE, EMAIL, CATEGORY, ANNOUNCEMENTCONTENT )
+								
+		VALUES (ANNOUNCEMENT_SEQUENCE.NEXTVAL, 
+				#{ announceTitle }, 
+				#{ email },
+				#{ category }, 
+				#{ announcementContent })
+				
+	
+</insert>
+
+</mapper>
+

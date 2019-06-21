@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teamproject3.mapper.MemberMapper">
+
+	<!-- 관리자 전용 쿼리, 모든 사용자의 정보를 가져옵니다. -->
+	<select id="selectAll" resultType="Member">
+		SELECT *
+		FROM (
+			SELECT ROWNUM AS RN, A.*
+			FROM (
+				SELECT *
+				FROM MEMBER
+				WHERE <include refid="search" />
+				ORDER BY REGDATE DESC
+			)A
+		) WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<sql id="search">
+		<choose>
+			<when test="searchOption == 'email'">
+				EMAIL LIKE '%' || #{searchValue} || '%'
+			</when>
+			<when test="searchOption == 'name'">
+				NAME LIKE '%' || #{searchValue} || '%'
+			</when>
+			<otherwise>
+				EMAIL LIKE '%' || #{searchValue} || '%' OR
+				NAME LIKE '%' || #{searchValue} || '%'
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<!-- 이메일로 사용자 정보를 가져옵니다. -->
+	<select id="selectById" parameterType="java.lang.String" resultType="Member">
+		SELECT *
+		FROM MEMBER
+		WHERE EMAIL = #{email}
+	</select>
+	
+	<!-- 사용자 수를 가져옵니다 -->
+	<select id="count" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE <include refid="search" /> AND DELETED = 0 AND ACTIVE = 1
+		
+	</select>
+	
+	<!-- 사용자 정보를 삽입합니다. -->
+	<insert id="insert" parameterType="Member">
+		INSERT INTO MEMBER
+			(EMAIL, PASSWD, NAME)
+		VALUES
+			(#{email}, #{passwd}, #{name})
+	</insert>
+	
+	<!-- 회원 정보 변경 -->
+	<update id="update" parameterType="Member">	
+		UPDATE MEMBER
+		SET
+			PASSWD = #{passwd},
+			NAME = #{name}
+		WHERE
+			EMAIL = #{email}
+	</update>
+	
+	<!-- 이메일을 참조하여 프로필 이미지를 가져옴 -->
+	<select id="selectProfileImageById" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT IMAGE
+		FROM MEMBER
+		WHERE
+			EMAIL = #{email}
+	</select>
+	
+	<!-- 이메일을 참조하여 프로필 이미지를 변경 -->
+	<update id="saveProfileImage">
+		UPDATE MEMBER
+			SET IMAGE = #{image}
+		WHERE
+			EMAIL = #{email}
+	</update>
+	
+	<!-- 회원 삭제 처리 -->
+	<update id="delete" parameterType="java.lang.String">
+		UPDATE MEMBER
+		SET DELETED = '1'
+		WHERE EMAIL = #{email}
+	</update>
+	
+	<!-- 삭제된 회원을 복구 -->
+	<update id="recover" parameterType="java.lang.String">
+		UPDATE MEMBER
+		SET DELETED = '0'
+		WHERE EMAIL = #{email}
+	</update>
+	
+	<!-- 회원을 활성화 상태로 변경 -->
+	<update id="activate" parameterType="java.lang.String">
+		UPDATE MEMBER
+		SET ACTIVE = '1'
+		WHERE EMAIL = #{email}
+	</update>
+	
+	<!-- 회원을 비활성 상태로 만듦 -->
+	<update id="inactivate" parameterType="java.lang.String">
+		UPDATE MEMBER
+		SET ACTIVE = '0'
+		WHERE EMAIL = #{email}
+	</update>
+	
+	<select id="countQuestionById" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*)
+		FROM QNA
+		WHERE EMAIL = #{email}
+	</select>
+
+</mapper>

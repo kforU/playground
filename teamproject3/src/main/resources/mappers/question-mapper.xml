@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teamproject3.mapper.QuestionMapper">
+
+	<resultMap type="QnA" id="QnAMap">
+		<id property="qnaNo" column="QNANO"/>
+		<result property="email" column="EMAIL"/>
+		<result property="qnaContent" column="QNACONTENT"/>
+		<result property="qnaAnswer" column="QNAANSWER"/>
+		<result property="qnaCategory" column="QNACATEGORY"/>
+		<result property="completed" column="COMPLETED"/>
+		<result property="regDate" column="REGDATE"/>
+	</resultMap>
+
+	<select id="selectAll" resultMap="QnAMap">
+		SELECT *
+		FROM (
+			SELECT ROWNUM AS RN, A.*
+			FROM (
+				SELECT *
+				FROM QNA
+				WHERE <include refid="search" /> AND <include refid="filter" />
+				ORDER BY QNANO DESC
+			)A
+		) WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+
+	<sql id="search">
+		<choose>
+			<when test="searchOption == 'email'">
+				EMAIL LIKE '%' || #{searchValue} || '%'
+			</when>
+			<when test="searchOption == 'category'">
+				QNACATEGORY LIKE '%' || #{searchValue} || '%'
+			</when>
+			<when test="searchOption == 'content'">
+				QNACONTENT LIKE '%' || #{searchValue} || '%'
+			</when>
+			<when test="searchOption == 'completed'">
+				COMPLETED LIKE '%' || #{searchValue} || '%'
+			</when>
+			<otherwise>
+				EMAIL LIKE '%' || #{searchValue} || '%' OR
+				QNACATEGORY LIKE '%' || #{searchValue} || '%' OR
+				QNACONTENT LIKE '%' || #{searchValue} || '%' OR
+				COMPLETED LIKE '%' || #{searchValue} || '%'
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<sql id="filter">
+		<choose>
+			<when test="completed == 'true'">
+				(COMPLETED = '1')
+			</when>
+			<when test="completed == 'false'">
+				(COMPLETED = '0')
+			</when>
+			<otherwise>
+				(COMPLETED = '1' OR
+				COMPLETED = '0')
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*)
+		FROM QNA
+		WHERE <include refid="filter" /> AND
+		<choose>
+			<when test="searchOption == 'email'">
+				(EMAIL LIKE '%' || #{searchValue} || '%')
+			</when>
+			<when test="searchOption == 'content'">
+				(QNACONTENT LIKE '%' || #{searchValue} || '%')
+			</when>
+			<otherwise>
+				(EMAIL LIKE '%' || #{searchValue} || '%' OR
+				QNACONTENT LIKE '%' || #{searchValue} || '%')
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert" parameterType="com.teamproject3.vo.QnA">
+		INSERT INTO QNA (QNANO, QNACATEGORY, QNACONTENT, EMAIL)
+		VALUES (QNA_SEQUENCE.NEXTVAL, #{ qnaCategory }, #{ qnaContent }, #{ email })
+		
+	</insert>
+	
+	<update id="answer">
+		UPDATE QNA
+		SET
+			QNAANSWER = #{answerText}
+		WHERE
+			QNANO = #{qnaNo}
+	</update>
+	
+	<update id="setCompleted">
+		UPDATE QNA
+		SET
+			COMPLETED = '1'
+		WHERE
+			QNANO = #{qnaNo}
+	</update>
+	
+</mapper>

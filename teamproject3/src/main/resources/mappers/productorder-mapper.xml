@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teamproject3.mapper.ProductOrderMapper">
+
+	<select id="selectAll" resultType="com.teamproject3.vo.ProductOrder">
+		
+		SELECT *
+		FROM (
+			SELECT ROWNUM AS RN, A.*
+			FROM (
+				SELECT *
+				FROM PRODUCTORDER
+				WHERE <include refid="search" /> AND EMAIL = #{email}
+				ORDER BY PRODUCTORDERNO DESC
+			)A
+		) WHERE RN BETWEEN #{start} AND #{end}
+		
+	</select>
+
+	<select id="count" resultType="int">
+		SELECT COUNT(*)
+		FROM PRODUCTORDER
+		WHERE <include refid="search" />
+	</select>
+	
+	<sql id="search">
+		<choose>
+			<when test="approved == 'true'">
+				APPROVAL = '1'
+			</when>
+			<when test="approved == 'false'">
+				APPROVAL = '0'
+			</when>
+			<otherwise>
+				APPROVAL = '1' OR
+				APPROVAL = '0'
+			</otherwise>
+		</choose>
+	</sql>
+
+</mapper>

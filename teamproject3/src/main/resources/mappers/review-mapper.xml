@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teamproject3.mapper.ReviewMapper">
+
+<select id="selectAll" resultType="com.teamproject3.vo.Review">
+	SELECT REVIEWNO, REVIEWTITLE, REVIEWHIT, REVIEWCONTENT, REGDATE
+	FROM REVIEW
+	WHERE DELETED = '0'
+	ORDER BY REVIEWNO DESC
+</select>
+
+<insert id="insert" parameterType="com.teamproject3.vo.Review"
+		useGeneratedKeys="true" keyColumn="reviewNo" keyProperty="reviewNo">
+		INSERT INTO REVIEW (REVIEWNO, REVIEWTITLE, EMAIL, REVIEWCONTENT)
+		VALUES (REVIEW_SEQUENCE.NEXTVAL, #{ reviewTitle }, #{ email }, #{ reviewContent })
+		
+</insert>
+<select id="selectOne" resultType="com.teamproject3.vo.Review">
+	SELECT REVIEWNO, EMAIL, REVIEWTITLE, REVIEWCONTENT
+	FROM REVIEW
+	WHERE REVIEWNO = #{ reviewNo } and DELETED = '0'
+</select>
+<update id="updateHit" parameterType="int">
+	UPDATE REVIEW
+	SET REVIEWHIT = REVIEWHIT + 1
+	WHERE REVIEWNO = #{ reviewNo }
+</update>
+
+<update id="update" parameterType="com.teamproject3.vo.Review">
+	UPDATE REVIEW
+	SET REVIEWTITLE = #{ reviewTitle }, REVIEWCONTENT = #{ reviewContent }
+	WHERE REVIEWNO = #{ reviewNo }
+</update>
+
+<update id="delete" parameterType="int">
+	UPDATE REVIEW
+	SET DELETED = '1'
+	WHERE REVIEWNO = #{ reviewNo }
+</update>
+
+<!-- ***********comment********** -->
+
+<insert id="insertComment" parameterType="com.teamproject3.vo.Comment">
+	INSERT INTO REVIEWCOMMENT (COMMENTNO, COMMENTCONTENT, EMAIL, REVIEWNO)
+	VALUES (REVIEWCOMMENT_SEQUENCE.NEXTVAL, #{ commentContent }, #{ email }, #{ reviewNo })
+
+</insert>
+
+<select id="selectCommentByReviewNo" resultType="com.teamproject3.vo.Comment">
+	SELECT COMMENTNO, COMMENTCONTENT, EMAIL, REGDATE
+	FROM REVIEWCOMMENT
+	WHERE REVIEWNO = #{ reviewNo }
+</select>
+<delete id="deleteComment" parameterType="int">
+	DELETE FROM REVIEWCOMMENT
+	WHERE COMMENTNO = #{ commentNo }
+</delete>
+<update id="updateComment" parameterType="com.teamproject3.vo.Comment">
+		UPDATE REVIEWCOMMENT
+		SET COMMENTCONTENT = #{ commentContent }
+		WHERE COMMENTNO = #{ commentNo }
+</update>
+
+
+</mapper>
+

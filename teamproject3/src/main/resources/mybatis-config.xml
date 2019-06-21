@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- Fully Qualified Name (패키지이름과 클래스이름을 모두 표시하는 이름)에 약식 이름 설정  -->
+	
+	<!-- type에 지정된 패키지 정로를 alias로 지정된 name으로 대체. -->
+	<typeAliases>
+		<typeAlias type="com.teamproject3.vo.Member" alias="Member"/>
+		<typeAlias type="com.teamproject3.vo.QnA" alias="QnA"/>
+		<typeAlias type="com.teamproject3.vo.TicketOrder" alias="TicketOrder"/>
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@211.197.18.246:1551:xe" />
+				<property name="username" value="playground" />
+				<property name="password" value="playground" />
+			</dataSource>
+		</environment>
+		<environment id="production">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@211.197.18.246:1551:xe" />
+				<property name="username" value="playground" />
+				<property name="password" value="playground" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	
+	<!-- SQL + Object Mapping Configuration -->
+	<mappers>
+		<mapper resource="mappers/product-mapper.xml"/>
+		<mapper resource="mappers/productorder-mapper.xml"/>
+		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/question-mapper.xml"/>
+		<mapper resource="mappers/announce-mapper.xml" />
+		<mapper resource="mappers/ticketorder-mapper.xml"/>
+		<mapper resource="mappers/review-mapper.xml" />
+	</mappers>
+	
+	
+</configuration>
