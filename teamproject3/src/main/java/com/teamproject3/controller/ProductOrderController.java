@@ -15,6 +15,7 @@ import com.teamproject3.vo.Product;
 import com.teamproject3.vo.ProductOrder;
 
 @Controller
+@RequestMapping("/product/")
 public class ProductOrderController {
 
 	@Autowired
@@ -45,8 +46,14 @@ public class ProductOrderController {
 		
 			productOrderService.saveProductOrder(productOrder);
 		
-		return "product/productOrderComplete";
+		return "redirect:/product/productOrderComplete";
 		
 	}
 
+	@RequestMapping(value="/productOrderComplete", method = RequestMethod.GET)
+	public String productOrderComplete() {
+		
+		return "product/productOrderComplete";
+		
+	}
 }

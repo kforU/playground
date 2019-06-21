@@ -74,7 +74,7 @@
 						
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img style="height: 500px;" class="d-block w-100" src="/controller/resources/images/tmp/${ product.productImage }" alt="First slide">
+								<img style="height: 500px;" class="d-block w-100" src="${ path }/resources/images/tmp/${ product.productImage }" alt="First slide">
 							</div>
 						</div>
 						<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -209,7 +209,7 @@
 							<c:when test="${ product.productCount > 0 }">
 							<h5 class="widget-header text-center">상품이 마음에 드십니까?</h5>
 								<ul class="list-inline mt-20">
-									<li class="list-inline-item"><a href="/controller/productPayment/${ product.productNo }" class="btn btn-transparent">즉시구매</a></li>
+									<li class="list-inline-item"><a href="${ path }/product/productPayment/${ product.productNo }" class="btn btn-transparent">즉시구매</a></li>
 									<li class="list-inline-item"><a href="" class="btn btn-transparent">장바구니</a></li>
 								</ul>
 							</c:when>
@@ -244,9 +244,9 @@
 						관리자 전용 기능
 						</p>
 						<!-- Update button -->
-						<a href="/controller/product/productUpdate/${ product.productNo }" class="btn btn-transparent-white" style="vertical-align: 20px;">게시물 수정</a>
+						<a href="${ path }/product/productUpdate/${ product.productNo }" class="btn btn-transparent-white" style="vertical-align: 20px;">게시물 수정</a>
 						<!-- Delete button -->
-						<a href="/controller/product/productDelete/${ product.productNo }" class="btn btn-transparent-white">게시물 삭제</a>
+						<a href="${ path }/product/productDelete/${ product.productNo }" class="btn btn-transparent-white">게시물 삭제</a>
 					</div>
 					</c:if>
 				</div>

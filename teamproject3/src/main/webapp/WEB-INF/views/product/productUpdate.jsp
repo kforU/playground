@@ -43,20 +43,20 @@
 								  <tbody>
 								  	<tr>
 								      <td>제품명</td>
-								      <td><input type="text" name="productName" value="${ product.productName }" style="width:500px"></td>
+								      <td><input type="text" name="productName" value="${ product.productName }" style="width:500px" required></td>
 								    </tr>
 								    <tr>
 								      <td>판매가</td>
-								      <td><input type="number" name="productPrice" value="${ product.productPrice }" style="width:500px">원</td>
+								      <td><input type="number" name="productPrice" value="${ product.productPrice }" style="width:500px" required>원</td>
 								    </tr>
 								    <tr>
 								      <td>재고수량</td>
-								      <td><input type="number" name="productCount" value="${ product.productCount }" style="width:100px"></td>
+								      <td><input type="number" name="productCount" value="${ product.productCount }" style="width:100px" required></td>
 								    </tr>
 								    <tr>
 								      <td style="vertical-align: middle;">카테고리</td>
 								      <td>
-								      	<select class="form-control" id="inputLocation4" name="productCategory" >
+								      	<select class="form-control" id="inputLocation4" name="productCategory" required>
 											<option>완구</option>
 											<option>의류</option>
 											<option>문구</option>
@@ -94,7 +94,7 @@
 					<br>
 					<div class="col-12">
 						<button type="submit" class="btn btn-main" id="savebutton">등록</button>
-						<a href="/controller/productDetail/${ product.productNo }"><button type="button" class="btn btn-white">취소</button></a>
+						<a href="${ path }/product/productDetail/${ product.productNo }"><button type="button" class="btn btn-white">취소</button></a>
 					</div>
 				</form>
 			</div>
@@ -203,6 +203,24 @@ $(function(){
         $("#frm").submit();
     })
 })
+
+function checkForm() {
+    var name = document.frm.name;
+    // 제목 입력 유무 체크
+    if(name.value == '' || !(name.value.length < 1) {
+        window.alert("제목을 입력해주세요.");
+        document.frm.name.focus();
+        document.getElementById('name').select();
+        return false; // 입력이 안되어 있다면 submint 이벤트를 중지
+    }
+    var price = document.getElementById('price');
+    // 암호 입력 유무 체크
+    if(document.frm.price.value == ''){
+        alert('판매가를 입력해주세요.');
+        price.focus();
+        return false;
+    }
+}
 </script>
 
 </body>

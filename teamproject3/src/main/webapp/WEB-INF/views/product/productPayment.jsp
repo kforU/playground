@@ -55,7 +55,7 @@
 						
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img style="height: 500px;" class="d-block w-100" src="/controller/resources/images/tmp/${ product.productImage }" alt="First slide">
+								<img style="height: 500px;" class="d-block w-100" src="${ path }/resources/images/tmp/${ product.productImage }" alt="First slide">
 							</div>
 						</div>
 					</div>

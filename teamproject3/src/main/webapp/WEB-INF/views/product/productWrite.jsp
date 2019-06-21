@@ -35,22 +35,22 @@
 		<div class="row">
 			<!-- Left sidebar -->
 			<div class="col-md-8">
-				<form action="productWrite" id="frm" method="post" enctype="multipart/form-data">
+				<form action="productWrite" id="frm" name="frm" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
 					<div>
 					<table class="table table-bordered product-table">
 						<h3>제품상세</h3>
 								  <tbody>
 								  	<tr>
 								      <td>제품명</td>
-								      <td><input type="text" name="productName" style="width:500px"></td>
+								      <td><input type="text" name="productName" id="name" style="width:500px" required></td>
 								    </tr>
 								    <tr>
 								      <td>판매가</td>
-								      <td><input type="number" name="productPrice" style="width:500px">원</td>
+								      <td><input type="number" name="productPrice" id="price" style="width:500px" required>원</td>
 								    </tr>
 								    <tr>
 								      <td>재고수량</td>
-								      <td><input type="number" name="productCount" style="width:100px"></td>
+								      <td><input type="number" name="productCount" id="count" style="width:100px" required></td>
 								    </tr>
 								    <tr>
 								      <td style="vertical-align: middle;">카테고리</td>
@@ -187,6 +187,25 @@ $(function(){
         $("#frm").submit();
     })
 })
+
+function checkForm() {
+    var name = document.frm.name;
+    // 제목 입력 유무 체크
+    if(name.value == '' || !(name.value.length < 1) {
+        window.alert("제목을 입력해주세요.");
+        document.frm.name.focus();
+        document.getElementById('name').select();
+        return false; // 입력이 안되어 있다면 submint 이벤트를 중지
+    }
+    var price = document.getElementById('price');
+    // 암호 입력 유무 체크
+    if(document.frm.price.value == ''){
+        alert('판매가를 입력해주세요.');
+        price.focus();
+        return false;
+    }
+}
+
 </script>
 
 </body>
