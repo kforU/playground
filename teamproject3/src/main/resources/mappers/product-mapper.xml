@@ -13,6 +13,51 @@
 		ORDER BY productNo DESC
 	</select>
 
+	<select id="selectToyProduct" 
+			resultType="com.teamproject3.vo.Product">
+		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
+		FROM PRODUCT
+		WHERE deleted = '0'
+		AND productCategory = '완구'
+		ORDER BY productNo DESC
+	</select>
+
+	<select id="selectWearProduct" 
+			resultType="com.teamproject3.vo.Product">
+		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
+		FROM PRODUCT
+		WHERE deleted = '0'
+		AND productCategory = '의류'
+		ORDER BY productNo DESC
+	</select>
+
+	<select id="selectPhrasesProduct" 
+			resultType="com.teamproject3.vo.Product">
+		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
+		FROM PRODUCT
+		WHERE deleted = '0'
+		AND productCategory = '문구'
+		ORDER BY productNo DESC
+	</select>
+
+	<select id="selectApplianceProduct" 
+			resultType="com.teamproject3.vo.Product">
+		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
+		FROM PRODUCT
+		WHERE deleted = '0'
+		AND productCategory = '가전'
+		ORDER BY productNo DESC
+	</select>
+	
+	<select id="selectAccessoryProduct" 
+			resultType="com.teamproject3.vo.Product">
+		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
+		FROM PRODUCT
+		WHERE deleted = '0'
+		AND productCategory = '악세사리'
+		ORDER BY productNo DESC
+	</select>
+	
 	<select id="selectOneProductNo"
 			parameterType="int"
 			resultType="com.teamproject3.vo.Product">
@@ -67,4 +112,11 @@
 		WHERE PRODUCTNO = #{ productNo }
 	</update>
 
+	<select id="searchProductByName"
+			parameterType="String" resultType="com.teamproject3.vo.Product">
+		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, regDate, productCategory
+		FROM PRODUCT
+		WHERE ProductName LIKE #{ search }
+		AND DELETED = '0'
+	</select>
 </mapper>

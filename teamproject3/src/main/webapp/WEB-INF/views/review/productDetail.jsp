@@ -43,6 +43,17 @@
 							<div style="margin-left: 15px; margin-right: 15px;">
 								<input type="text" class="form-control" id="inputtext4" placeholder="검색어를 입력해주세요" style="width: 500px;">
 							</div>
+							<div>
+								<select class="form-control" id="inputLocation4"
+									style="height: 50px">
+									<option style="color: black;" value="" disabled selected hidden>카테고리를선택해 주세요</option>
+									<option style="color: black;" value="완구">완구</option>
+									<option style="color: black;" value="의류">의류</option>
+									<option style="color: black;" value="문구">문구</option>
+									<option style="color: black;" value="가전">가전</option>
+									<option style="color: black;" value="악세사리">악세사리</option>
+								</select>
+							</div>
 							<div class="form-group col-md-2"
 								style="margin-left: 15px; margin-right: 15px;">
 								<button type="submit" class="btn btn-primary">검색</button>
@@ -246,7 +257,7 @@
 						<!-- Update button -->
 						<a href="/controller/product/productUpdate/${ product.productNo }" class="btn btn-transparent-white" style="vertical-align: 20px;">게시물 수정</a>
 						<!-- Delete button -->
-						<a href="/controller/product/productDelete/${ product.productNo }" class="btn btn-transparent-white">게시물 삭제</a>
+						<a href="/controller/productDelete/${ product.productNo }" class="btn btn-transparent-white">게시물 삭제</a>
 					</div>
 					</c:if>
 				</div>

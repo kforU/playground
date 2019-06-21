@@ -34,11 +34,43 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
-	public List<Product> selectAllProductImage(int productNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Product> selectToyProduct() {
+		
+		List<Product> products = productMapper.selectToyProduct();
+		
+		return products;
 	}
 
+
+	@Override
+	public List<Product> selectWearProduct() {
+
+		List<Product> products = productMapper.selectWearProduct();
+		
+		return products;
+	}
+	@Override
+	public List<Product> selectPhrasesProduct() {
+
+		List<Product> products = productMapper.selectPhrasesProduct();
+		
+		return products;
+	}
+	@Override
+	public List<Product> selectApplianceProduct() {
+		
+		List<Product> products = productMapper.selectApplianceProduct();
+		
+		return products;
+	}
+	@Override
+	public List<Product> selectAccessoryProduct() {
+		
+		List<Product> products = productMapper.selectAccessoryProduct();
+		
+		return products;
+	}
+	
 	@Override
 	public Product selectOneProductNo(int productNo) {
 		
@@ -74,6 +106,19 @@ public class ProductRepositoryImpl implements ProductRepository {
 		
 		productMapper.deleteProductImage(productNo);
 		
+	}
+	@Override
+	public List<Product> searchProductByName(String search) {
+		
+		List<Product> searchProduct = productMapper.searchProductByName(search);
+		
+		return searchProduct;
+	}
+	
+	@Override
+	public List<Product> selectAllProductImage(int productNo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

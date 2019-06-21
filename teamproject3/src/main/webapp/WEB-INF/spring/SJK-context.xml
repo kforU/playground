@@ -21,6 +21,24 @@
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
 	</bean>
 
+	<bean id="productOrderRepository"
+		  class="com.teamproject3.repository.ProductOrderRepository">
+		<property name="sessionTemplate" ref="sqlSessionTemplate" />
+		<property name="productOrderMapper" ref="productOrderMapper" />	  
+	</bean>
+
+	<bean id="productOrderService"
+		  class="com.teamproject3.service.ProductOrderService">
+		<property name="productOrderRepository" ref="productOrderRepository" />
+	</bean>
+
+	<bean id="productOrderMapper"
+		  class="org.mybatis.spring.mapper.MapperFactoryBean"> 
+		<property name="mapperInterface"
+				  value="com.teamproject3.mapper.ProductOrderMapper" />
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+	</bean>
+
 	<bean id="multipartResolver" 
 		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- maximum file size in bytes 50MB -->

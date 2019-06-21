@@ -15,6 +15,14 @@ public class ProductOrderService {
 	@Inject
 	ProductOrderRepository productOrderRepository;
 	
+	public ProductOrderRepository getProductOrderRepository() {
+		return productOrderRepository;
+	}
+
+	public void setProductOrderRepository(ProductOrderRepository productOrderRepository) {
+		this.productOrderRepository = productOrderRepository;
+	}
+
 	public List<ProductOrder> findAll(int start, int end, String approved, String email){
 		return productOrderRepository.selectAll(start, end, approved, email);
 	}
@@ -23,4 +31,11 @@ public class ProductOrderService {
 		return productOrderRepository.count(approved);
 	}
 
+	public int saveProductOrder(ProductOrder productOrder) {
+		
+		int newProductOrderNo = productOrderRepository.insertProductOrder(productOrder);
+		
+		return newProductOrderNo;
+	}
+	
 }

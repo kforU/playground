@@ -41,4 +41,13 @@
 		</choose>
 	</sql>
 
+	<insert id="insertProductOrder"
+			parameterType="com.teamproject3.vo.ProductOrder"
+			useGeneratedKeys="true"
+			keyColumn="productOrderNo"
+			keyProperty="productOrderNo">
+		INSERT INTO PRODUCTORDER (PRODUCTORDERNO, PRODUCTORDERCOUNT, EMAIL, PRODUCTNO)
+		VALUES (PRODUCTORDER_SEQUENCE.NEXTVAL, #{ productOrderCount }, #{ email }, #{ productNo })
+	</insert>
+
 </mapper>

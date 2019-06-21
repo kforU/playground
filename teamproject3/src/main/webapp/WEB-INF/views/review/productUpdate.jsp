@@ -35,7 +35,7 @@
 		<div class="row">
 			<!-- Left sidebar -->
 			<div class="col-md-8">
-				<form action="${ path }/product/productUpdate" id="frm" method="post" enctype="multipart/form-data">
+				<form action="/controller/product/productUpdate" id="frm" method="post" enctype="multipart/form-data">
 					<div>
 					<input type="hidden" name="productNo" value="${ product.productNo }">
 					<table class="table table-bordered product-table">
@@ -71,7 +71,7 @@
 								      	<c:when test="${product.productImage ne null }">
 								      	<td>
 								      		${ product.productImage }
-								      		[<a href="${ path }/product/deleteImage/${ product.productNo }">삭제</a>]
+								      		[<a href="/controller/product/deleteImage/${ product.productNo }">삭제</a>]
 								      		
 								      	</td>
 								      	</c:when>
