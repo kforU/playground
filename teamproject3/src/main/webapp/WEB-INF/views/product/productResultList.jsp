@@ -40,7 +40,7 @@
 										<form action="productSearch" method="get">
 											<div class="form-row">
 												<div style="margin-left: 15px; margin-right: 15px;">
-													<input type="text" class="form-control" name="search" placeholder="검색어를 입력해주세요" style="width: 500px;">
+													<input type="text" class="form-control" name="search" id="inputtext4" placeholder="검색어를 입력해주세요" style="width: 500px;">
 												</div>
 												<div class="form-group col-md-2"
 													style="margin-left: 15px; margin-right: 15px;">
@@ -101,7 +101,7 @@
 								<div class="col-md-9">
 									<div class="product-grid-list">
 										<div class="row mt-30">
-											<c:forEach var="product" items="${ products }">
+											<c:forEach var="product" items="${ searchProduct }">
 												<div class="col-sm-12 col-lg-4 col-md-6">
 													<!-- product card -->
 													<div class="product-item bg-light">

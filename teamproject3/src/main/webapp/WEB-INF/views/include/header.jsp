@@ -43,7 +43,7 @@
 								<!-- Dropdown list -->
 								<div class="dropdown-menu dropdown-menu-right">
 									<a class="dropdown-item" href="${ path }/ticket/reservation">티켓 구매</a>
-									<a class="dropdown-item" href="/controller/productList">기프트 샵</a>
+									<a class="dropdown-item" href="${ path }/product/productList">기프트 샵</a>
 									
 								</div>
 							</li>

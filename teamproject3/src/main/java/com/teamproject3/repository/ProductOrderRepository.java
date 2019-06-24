@@ -7,12 +7,31 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.teamproject3.mapper.ProductOrderMapper;
 import com.teamproject3.vo.ProductOrder;
 
 @Repository
 public class ProductOrderRepository implements CommonRepository<ProductOrder> {
+	
+	private SqlSessionTemplate sessionTemplate;
+	public SqlSessionTemplate getSessionTemplate() {
+		return sessionTemplate;
+	}	
+	public void setSessionTemplate(SqlSessionTemplate sessionTemplate) {
+		this.sessionTemplate = sessionTemplate;
+	}
+	
+	private ProductOrderMapper productOrderMapper;
+
+	public ProductOrderMapper getProductOrderMapper() {
+		return productOrderMapper;
+	}
+	public void setProductOrderMapper(ProductOrderMapper productOrderMapper) {
+		this.productOrderMapper = productOrderMapper;
+	}
 	
 	private static final String PRODUCT_ORDER_NAMESPACE = "com.teamproject3.mapper.ProductOrderMapper";
 	
@@ -65,4 +84,11 @@ public class ProductOrderRepository implements CommonRepository<ProductOrder> {
 		return sqlSession.selectOne(PRODUCT_ORDER_NAMESPACE.concat(".count"), params);
 	}
 
+	public int insertProductOrder(ProductOrder productOrder) {
+		
+		productOrderMapper.insertProductOrder(productOrder);
+			
+		return productOrder.getProductOrderNo();
+	}
+	
 }

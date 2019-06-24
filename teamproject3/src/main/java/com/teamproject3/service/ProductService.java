@@ -6,7 +6,17 @@ import com.teamproject3.vo.Product;
 
 public interface ProductService {
 
-	List<Product> findAllProduct();	
+	List<Product> findAllProduct();
+	
+	List<Product> findToyProduct();
+
+	List<Product> findWearProduct();
+
+	List<Product> findPhrasesProduct();
+
+	List<Product> findApplianceProduct();
+
+	List<Product> findAccessoryProduct();
 	
 	List<Product> findAllProductImage(int ProductNo);
 	
@@ -19,4 +29,7 @@ public interface ProductService {
 	void deleteProduct(int ProductNo);
 
 	void deleteProductImage(int productNo);
+	
+	List<Product> searchProductByName(String search);
+
 }

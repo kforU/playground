@@ -35,28 +35,27 @@
 		<div class="row">
 			<!-- Left sidebar -->
 			<div class="col-md-8">
-				<form action="${ path }/product/productUpdate" id="frm" method="post" enctype="multipart/form-data">
+				<form action="productWrite" id="frm" method="post" enctype="multipart/form-data">
 					<div>
-					<input type="hidden" name="productNo" value="${ product.productNo }">
 					<table class="table table-bordered product-table">
 						<h3>제품상세</h3>
 								  <tbody>
 								  	<tr>
 								      <td>제품명</td>
-								      <td><input type="text" name="productName" value="${ product.productName }" style="width:500px"></td>
+								      <td><input type="text" name="productName" style="width:500px"></td>
 								    </tr>
 								    <tr>
 								      <td>판매가</td>
-								      <td><input type="number" name="productPrice" value="${ product.productPrice }" style="width:500px">원</td>
+								      <td><input type="number" name="productPrice" style="width:500px">원</td>
 								    </tr>
 								    <tr>
 								      <td>재고수량</td>
-								      <td><input type="number" name="productCount" value="${ product.productCount }" style="width:100px"></td>
+								      <td><input type="number" name="productCount" style="width:100px"></td>
 								    </tr>
 								    <tr>
 								      <td style="vertical-align: middle;">카테고리</td>
 								      <td>
-								      	<select class="form-control" id="inputLocation4" name="productCategory" >
+								      	<select class="form-control" id="inputLocation4" name="productCategory">
 											<option>완구</option>
 											<option>의류</option>
 											<option>문구</option>
@@ -67,34 +66,19 @@
 								    </tr>
 								    <tr>
 								      <td>첨부이미지</td>
-								      <c:choose>
-								      	<c:when test="${product.productImage ne null }">
-								      	<td>
-								      		${ product.productImage }
-								      		[<a href="${ path }/product/deleteImage/${ product.productNo }">삭제</a>]
-								      		
-								      	</td>
-								      	</c:when>
-								      	<c:otherwise>
-								      	<td>
-								      		<input type="file" name="productImage2" />
-								      	</td>
-								      	</c:otherwise>
-								      </c:choose>
+								      <td><input type="file" name="productImage2"/></td>
 								    </tr>
 								</tbody>
 							</table>
 						</div>
 					<div style="margin-top: 5px;">
 						<h3>제품설명</h3>
-						<textarea name="productContent" id="productContent" style="width:705px" rows="15">
-							${ product.productContent }
-						</textarea>
+						<textarea name="productContent" id="productContent" style="width:705px" rows="15"></textarea>
 					</div>
 					<br>
 					<div class="col-12">
 						<button type="submit" class="btn btn-main" id="savebutton">등록</button>
-						<a href="/controller/productDetail/${ product.productNo }"><button type="button" class="btn btn-white">취소</button></a>
+						<a href="productList"><button type="button" class="btn btn-white">취소</button></a>
 					</div>
 				</form>
 			</div>

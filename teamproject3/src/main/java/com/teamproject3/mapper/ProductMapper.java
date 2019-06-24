@@ -7,6 +7,16 @@ import com.teamproject3.vo.Product;
 public interface ProductMapper {
 
 	List<Product> selectAllProduct();	// 상품 목록
+
+	List<Product> selectToyProduct();
+	
+	List<Product> selectWearProduct();
+	
+	List<Product> selectPhrasesProduct();
+	
+	List<Product> selectApplianceProduct();
+	
+	List<Product> selectAccessoryProduct();
 	
 	List<Product> selectAllProductImage(int productNo);
 	
@@ -19,5 +29,8 @@ public interface ProductMapper {
 	void deleteProduct(int productNo);	// 상품 삭제
 
 	void deleteProductImage(int productNo);
+	
+	List<Product> searchProductByName(String search);
+
 	
 }
