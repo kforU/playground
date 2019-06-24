@@ -158,7 +158,15 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
 var slider = new Slider('#ex2', {});
-
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+function openNav() {
+    document.getElementById("MainSidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("MainSidenav").style.width = "0";
+  }

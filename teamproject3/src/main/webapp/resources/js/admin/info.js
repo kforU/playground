@@ -8,6 +8,7 @@ $(document).ready(function(e){
 	getCountForReservationList();
 //	getCountForProductList();
 	getCountForQuestionList();
+
 });
 
 /* ========================================= 모든 멤버 가져오기 =============================================== */
@@ -29,7 +30,7 @@ function getMemberList(page) {
 			var members = resp.members;
 			var pagination = resp.pagination;
 			renderMemberList(members);
-			renderPaginationForMemberList(pagination);
+			renderPagination("#paginationForMemberList", "getMemberList", pagination);
 		},
 		error: function(err){
 			console.log(err);
@@ -105,38 +106,6 @@ function renderMemberList(memList) {
 	
 	$("#memberListArray").html(content);
 	
-}
-
-function renderPaginationForMemberList(pagination) {
-
-	var content = '';
-	
-	if (pagination.block !== 1){
-		content += '<li class="page-item">';
-		content += 		'<a class="page-link" href="javascript:getMemberList(' + pagination.prevBlock + ')" aria-label="Prev">';
-		content += 			'<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>';
-		content += 		'</a>';
-		content += '</li>';
-	}
-	
-	for (var i = pagination.blockBegin; i <= pagination.blockEnd; i++){
-		if (pagination.page === i) {
-			content += '<li class="page-item active"><a class="page-link" href="javascript:getMemberList(' + i + ')">' + i + '</a></li>';
-		} else {
-			content += '<li class="page-item"><a class="page-link" href="javascript:getMemberList(' + i + ')">' + i + '</a></li>';
-		}
-	}
-	
-	if (pagination.block !== pagination.totBlock) {
-		content += '<li class="page-item">';
-		content += 		'<a class="page-link" href="javascript:getMemberList(' + pagination.nextBlock + ')" aria-label="Next">';
-		content += 			'<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>';
-		content += 		'</a>';
-		content += '</li>';
-	}
-	
-	$("#innerPaginationForMemberList").html(content);
-
 }
 
 $("#searchButtonForMemberList").on("click", function(e){
@@ -262,7 +231,7 @@ function getQuestionList(page) {
 			var questionList = resp.questions;
 			var pagination = resp.pagination;
 			renderQuestionList(questionList);
-			renderPaginationForQuestion(pagination);
+			renderPagination("#paginationForQuestionList", "getQuestionList", pagination);
 		}
 		
 	});
@@ -368,38 +337,6 @@ function submitAnswer() {
 	
 }
 
-function renderPaginationForQuestion(pagination) {
-	
-	var content = '';
-	
-	if (pagination.block !== 1){
-		content += '<li class="page-item">';
-		content += 		'<a class="page-link" href="javascript:getQuestionList(' + pagination.prevBlock + ')" aria-label="Prev">';
-		content += 			'<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>';
-		content += 		'</a>';
-		content += '</li>';
-	}
-	
-	for (var i = pagination.blockBegin; i <= pagination.blockEnd; i++){
-		if (pagination.page === i) {
-			content += '<li class="page-item active"><a class="page-link" href="javascript:getQuestionList(' + i + ')">' + i + '</a></li>';
-		} else {
-			content += '<li class="page-item"><a class="page-link" href="javascript:getQuestionList(' + i + ')">' + i + '</a></li>';
-		}
-	}
-	
-	if (pagination.block !== pagination.totBlock) {
-		content += '<li class="page-item">';
-		content += 		'<a class="page-link" href="javascript:getQuestionList(' + pagination.nextBlock + ')" aria-label="Next">';
-		content += 			'<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>';
-		content += 		'</a>';
-		content += '</li>';
-	}
-	
-	$("#innerPaginationForQuestionList").html(content);
-	
-}
-
 $("#searchButtonForQuestionList").on("click", function(e){
 	e.preventDefault();
 	searchOptionForQuestion = $("#searchOptionForQuestionList").val();
@@ -431,7 +368,7 @@ function getReservationList(page) {
 			allTickets = resp.tickets;
 			
 			renderReservationList(reservationList);
-			renderPaginationForReservationList(pagination);
+			renderPagination("#paginationForReservationList", "getReservationList", pagination);
 		},
 		error: function(err) {
 			console.log(err.status);
@@ -519,38 +456,6 @@ function renderReservationList(list) {
 	}
 	
 	$("#reservationListArray").html(content);
-	
-}
-
-function renderPaginationForReservationList(pagination) {
-
-	var content = '';
-	
-	if (pagination.block !== 1){
-		content += '<li class="page-item">';
-		content += 		'<a class="page-link" href="javascript:getReservationList(' + pagination.prevBlock + ')" aria-label="Prev">';
-		content += 			'<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>';
-		content += 		'</a>';
-		content += '</li>';
-	}
-	
-	for (var i = pagination.blockBegin; i <= pagination.blockEnd; i++){
-		if (pagination.page === i) {
-			content += '<li class="page-item active"><a class="page-link" href="javascript:getReservationList(' + i + ')">' + i + '</a></li>';
-		} else {
-			content += '<li class="page-item"><a class="page-link" href="javascript:getReservationList(' + i + ')">' + i + '</a></li>';
-		}
-	}
-	
-	if (pagination.block !== pagination.totBlock) {
-		content += '<li class="page-item">';
-		content += 		'<a class="page-link" href="javascript:getReservationList(' + pagination.nextBlock + ')" aria-label="Next">';
-		content += 			'<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>';
-		content += 		'</a>';
-		content += '</li>';
-	}
-	
-	$("#innerPaginationForReservationList").html(content);
 	
 }
 
@@ -851,4 +756,87 @@ $("#delete").on("click", function(e){
 
 function deleteMember_(){
 	alert("관리자 계정은 삭제할 수 없습니다.");
+}
+
+/* ========================================= pagination 생성 함수 =============================================== */
+// copyTo : 페이지네이션을 어디에 붙일지 지정 ex) '#textArea'
+// callback : 버튼을 누르면 무슨 함수가 실행될지 지정 ex) 'getMemberList'
+// pagination : 페이징 객체
+function renderPagination(copyTo, callback, pagination) {
+	
+	let nav = document.createElement("nav");
+	
+	let ul = document.createElement("ul");
+	$(ul).attr("class", "pagination justify-content-center");
+	
+	if (pagination.block != 1) {
+		let li = document.createElement("li");
+		$(li).attr("class", "page-item");
+		
+		let a = document.createElement("a");
+		$(a).attr("class", "page-link");
+		$(a).attr("href", "javascript:" + callback + "(" + pagination.prevBlock + ")");
+		$(a).attr("aria-label", "Next");
+		
+		let span = document.createElement("span");
+		$(span).attr("aria-hidden", "true");
+		 
+		let i = document.createElement("i");
+		$(i).attr("class", "fa fa-angle-left");
+		
+		span.append(i);
+		a.append(span);
+		li.append(a);
+		ul.append(li);
+	}
+	
+	for (var i = pagination.blockBegin; i <= pagination.blockEnd; i++) {
+		if (pagination.page == i) {
+			let li = document.createElement("li");
+			$(li).attr("class", "page-item active");
+
+			let a = document.createElement("a");
+			$(a).attr("class", "page-link");
+			$(a).attr("href", "#");
+			$(a).text(i);
+			
+			li.append(a);
+			ul.append(li);
+		} else {
+			let li = document.createElement("li");
+			$(li).attr("class", "page-item");
+			
+			let a = document.createElement("a");
+			$(a).attr("class", "page-link");
+			$(a).attr("href", "javascript:" + callback + "(" + i + ")");
+			$(a).text(i);
+			
+			li.append(a);
+			ul.append(li);
+		}
+	}
+	
+	if (pagination.block !== pagination.totBlock) {
+		let li = document.createElement("li");
+		$(li).attr("class", "page-item");
+		
+		let a = document.createElement("a");
+		$(a).attr("class", "page-link");
+		$(a).attr("href", "javascript:" + callback + "(" + pagination.nextBlock + ")");
+		
+		let span = document.createElement("span");
+		$(span).attr("aria-hidden", "true");
+		
+		let i = document.createElement("i");
+		$(i).attr("class", "fa fa-angle-right");
+		
+		span.append(i);
+		a.append(span);
+		li.append(a);
+		ul.append(li);
+	}
+	
+	nav.append(ul);
+	
+	$(copyTo).html(ul);
 }

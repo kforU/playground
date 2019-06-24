@@ -66,7 +66,7 @@
 								<!-- Dropdown list -->
 								<div class="dropdown-menu dropdown-menu-right">
 									<a class="dropdown-item" href="${ path }/announcement/QnApage">고객 소리함</a>
-									<a class="dropdown-item" href="#">건의사항</a>
+									<a class="dropdown-item" href="${ path }/announcement/FAQpage">FAQ</a>
 								</div>
 							</li>
 						</ul>

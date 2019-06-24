@@ -25,13 +25,7 @@
 		</table>
 		
 		<!-- pagination -->
-		<nav>
-		  <ul class="pagination justify-content-center" id="innerPaginationForQuestionList">
-		  
-		  	<!-- 동적으로 처리됩니다. -->
-		    
-		  </ul>
-		</nav>
+		<div id="paginationForQuestionList"></div>
 		<br>
 		<div class="row">
 		

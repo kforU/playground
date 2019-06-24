@@ -70,11 +70,9 @@
               				<h4>${ attraction.attractionName }</h4>
               				
               			</div>
-            		<img class="card-img-top img-fluid" 
-             			 src="${path}/resources/uploadFile/nullImage.jpg"
-            		>
-            		<!-- src="/resources/uploadFile/${ attraction.attractionImage }" > -->
-            			
+              		<div class="imageContainer">
+            		<img class="card-img-top img-fluid" src="${path}/resources/images/uploadFile/${ attraction.attractionImage }">
+             		</div>
             		</a>
             	</div>
            	</c:forEach>
@@ -90,9 +88,10 @@
 
 <!-- 이후 삭제할 버튼 -->
  <div class="input-group">		
+ <div id="buttons" style='display:${ member.name eq "관리자" ? "block" : "none" }'>
  	<a class="nav-link login-button" href="attractionWrite" style="float:right;">새글 등록</a>
 </div>
-<!-- 이후 삭제할 버튼 -->
+</div>
 
 
 </section>
@@ -108,6 +107,7 @@
 <!-- Footer Bottom -->
 <jsp:include page="/WEB-INF/views/include/footer.jsp" />
 <jsp:include page="/WEB-INF/views/include/jsimport.jsp" />
+
 
 </body>
 

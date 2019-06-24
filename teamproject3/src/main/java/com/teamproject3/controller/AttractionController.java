@@ -56,7 +56,7 @@ public class AttractionController {
 		MultipartFile mf = req.getFile("attach");
 		
 		ServletContext application = req.getServletContext();
-		String path = application.getRealPath("/resources/uploadFile");
+		String path = application.getRealPath("/resources/images/uploadFile");
 			
 			
 			String userFileName = mf.getOriginalFilename();
@@ -107,12 +107,14 @@ public class AttractionController {
 		
 	}
 	
+	
+	//delete 작업
 	@RequestMapping( value = "/attractionDelete/{attractionNo}", method=RequestMethod.GET)
 	public String attractionDelete(@PathVariable int attractionNo ) {
 		
 		attractionService.deleteAttraction(attractionNo);
 		
-		return "redirect:attractionList";
+		return "redirect:/attraction/attractionList";
 		
 	}
 	
