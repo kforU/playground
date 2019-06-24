@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.teamproject3.repository.QnARepository;
+import com.teamproject3.vo.PageRequest;
 import com.teamproject3.vo.QnA;
 
 @Service
@@ -22,12 +23,19 @@ public class QnAService {
 	private static final String SUCCESS = "success";
 	private static final String FAILED = "failed";
 	
-	public List<QnA> findAll(int start, int end, String searchOption, String searchValue, String completed) {
-		return qnARepository.selectAll(start, end, searchOption, searchValue, completed);
+	public List<QnA> findAll(int start, int end, PageRequest pageRequest) {
+		return qnARepository.selectAll(
+				start, end, 
+				pageRequest.getSearchOption(),
+				pageRequest.getSearchValue(),
+				pageRequest.getCompleted());
 	}
 	
-	public int count(String searchOption, String searchValue, String completed) {
-		return qnARepository.count(searchOption, searchValue, completed);
+	public int count(PageRequest pageRequest) {
+		return qnARepository.count(
+				pageRequest.getSearchOption(),
+				pageRequest.getSearchValue(), 
+				pageRequest.getCompleted());
 	}
 	
 	public int registerQnA(QnA qnA) {

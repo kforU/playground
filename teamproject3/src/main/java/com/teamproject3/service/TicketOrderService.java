@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.teamproject3.repository.TicketOrderRepository;
+import com.teamproject3.vo.PageRequest;
 import com.teamproject3.vo.Ticket;
 import com.teamproject3.vo.TicketOrder;
 
@@ -20,8 +21,11 @@ public class TicketOrderService {
 	private static final String SUCCESS = "success";
 	private static final String FAILED = "falied";
 	
-	public List<TicketOrder> findAll(int start, int end, String searchOption, String searchValue) {
-		List<TicketOrder> orders = repository.selectAll(start, end, searchOption, searchValue);
+	public List<TicketOrder> findAll(int start, int end, PageRequest pageRequest) {
+		List<TicketOrder> orders = repository.selectAll(
+				start, end, 
+				pageRequest.getSearchOption(), 
+				pageRequest.getSearchValue());
 		for (TicketOrder order: orders) {
 			// 티켓 유효일이 오늘보다 이전이면 만료된 티켓으로 간주
 			order.setExpired(new Date().after(order.getTicketOrderUseDate()));
@@ -29,8 +33,10 @@ public class TicketOrderService {
 		return orders;
 	}
 	
-	public int count(String searchOption, String searchValue) {
-		return repository.count(searchOption, searchValue);
+	public int count(PageRequest pageRequest) {
+		return repository.count(
+				pageRequest.getSearchOption(), 
+				pageRequest.getSearchValue());
 	}
 	
 	public String approveTicket(int ticketOrderNo) {

@@ -21,6 +21,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.teamproject3.repository.MemberRepository;
 import com.teamproject3.vo.Member;
+import com.teamproject3.vo.PageRequest;
 
 @Service
 public class MemberService implements ServletContextAware {
@@ -73,12 +74,17 @@ public class MemberService implements ServletContextAware {
 		return name != null || Pattern.matches("^[a-zA-Z0-9ㄱ-ㅎ가-힣]{2,24}$", name);
 	}
 	
-	public List<Member> findAll(int start, int end, String serachOption, String searchValue) {
-		return memberRepository.selectAll(start, end, serachOption, searchValue);
+	public List<Member> findAll(int start, int end, PageRequest pageRequest) {
+		return memberRepository.selectAll(
+				start, end, 
+				pageRequest.getSearchOption(),
+				pageRequest.getSearchValue());
 	}
 	
-	public int count(String searchOption, String searchValue) {
-		return memberRepository.count(searchOption, searchValue);
+	public int count(PageRequest pageRequest) {
+		return memberRepository.count(
+				pageRequest.getSearchOption(), 
+				pageRequest.getSearchValue());
 	}
 	
 	// 이메일로 프로필 이미지를 가져옴
