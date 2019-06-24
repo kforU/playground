@@ -114,8 +114,8 @@ public class AttractionController {
 		
 		attractionService.deleteAttraction(attractionNo);
 		
-		return "redirect:/attraction/attractionList";
-		
+		return "attraction/attractionList";
+
 	}
 	
 	

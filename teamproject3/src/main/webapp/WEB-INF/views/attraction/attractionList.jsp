@@ -86,11 +86,13 @@
   </div>
 </div> 
 
-<!-- 이후 삭제할 버튼 -->
- <div class="input-group">		
- <div id="buttons" style='display:${ member.name eq "관리자" ? "block" : "none" }'>
- 	<a class="nav-link login-button" href="attractionWrite" style="float:right;">새글 등록</a>
+ <div style="float: right;">	
+ <sec:authorize access="hasRole('ADMIN')">	
+ <div id="buttons">
+ 	<a class="btn btn-transparent" href="attractionWrite" style="float:right;">새글 등록</a>
 </div>
+</sec:authorize>
+
 </div>
 
 

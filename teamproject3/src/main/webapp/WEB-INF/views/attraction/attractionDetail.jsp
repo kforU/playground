@@ -46,20 +46,23 @@
       
       
 </div>
+
+    <div style="margin:auto; text-align: center;">
+	
+	<sec:authorize access="hasRole('ADMIN')">
+	<div id="buttons">
+     	<input class="btn" type="button" id="deleted" value="삭제">
+    	<input class="btn" type="button" id="return" value="돌아가기">	
+     </div>
+	</sec:authorize>
+	
+	</div>
 </article>
  </div>
 <div class="container">
     <div class="margin-bottom-15">
 
-    <div style="margin:auto; text-align: center;">
-	
-	
-	<div id="buttons" style='display:${ member.name eq "관리자" ? "block" : "none" }'>
-     	<input class="btn btn-transparent" type="button" id="deleted" value="삭제">
-    	<input class="btn btn-transparent" type="button" id="return" value="돌아가기">	
-     </div>
-	
-	</div>
+
 
 </div>
 
@@ -77,10 +80,10 @@
     	$(function(){
     		
     		$('#deleted').on('click', function(event){
-    			location.href="${ path }/attraction/attractionDelete/${ attraction.attractionNo }"
+    			location.href="${ path }/attractionDelete/${ attraction.attractionNo }"
     		});
     		$('#return').on('click', function(event){
-    			location.href="${ path }/attraction/attractionList"
+    			location.href="${ path }/attractionList"
     		})
 
     	});

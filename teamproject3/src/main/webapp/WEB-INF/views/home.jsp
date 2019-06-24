@@ -56,6 +56,7 @@
 		
 		<ul class="bx">
 <c:forEach var="announcement" items="${ announcements }">
+<c:if test="${ announcement.category eq '이벤트' }">
 	<li class="listyle">
 					<!-- product card -->
 	<div class="product-item bg-light">
@@ -79,6 +80,7 @@
 	</div>
 
 	</li>
+	</c:if>
 </c:forEach>	
 </ul>
 		
