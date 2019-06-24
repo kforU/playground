@@ -58,7 +58,7 @@
   	<article>
         <header class="section background-dark">
           <div class="line" style="width:900px">        
-            <h1 class="Detail Page Title" style="text-align: center">작성 페이지(QnA)</h1>
+            <h1 class="Detail Page Title" style="text-align: center">작성 페이지(EVENT)</h1>
           </div>  
         </header>
        <div>

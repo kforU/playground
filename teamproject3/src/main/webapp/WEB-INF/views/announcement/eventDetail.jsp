@@ -120,7 +120,7 @@
     		});
     		
     		$('#deleted').on('click', function(event){
-    			location.href="${ path }/announcement/announcedelete/${ announcement.announcementNo }"
+    			location.href="${ path }/announcement/eventdelete/${ announcement.announcementNo }"
     		});
     		$('#return').on('click', function(event){
     			location.href="${ path }/announcement/eventpage"
