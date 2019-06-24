@@ -25,13 +25,7 @@
 			</tbody>
 		</table>
 		
-		<nav>
-		  <ul class="pagination justify-content-center" id="innerPaginationForReservationList">
-		  
-		  	<!-- 동적으로 처리됩니다. -->
-		    
-		  </ul>
-		</nav>
+		<div id="paginationForReservationList"></div>
 		<br>
 		
 		<div class="row">
