@@ -293,4 +293,10 @@ public class AnnounceController {
 
 		return "announcement/eventDetail";
 	}
+	
+	@RequestMapping(path="FAQpage", method=RequestMethod.GET)
+	public String FAQpage() {
+		
+		return "announcement/FAQpage";
+	}
 }
