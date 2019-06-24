@@ -45,6 +45,8 @@
 		<mapper resource="mappers/announce-mapper.xml" />
 		<mapper resource="mappers/ticketorder-mapper.xml"/>
 		<mapper resource="mappers/review-mapper.xml" />
+		<mapper resource="mappers/attraction-mapper.xml" />
+		
 	</mappers>
 	
 	

@@ -28,6 +28,7 @@ import com.teamproject3.service.TicketOrderService;
 import com.teamproject3.util.CountHelper;
 import com.teamproject3.util.Pagination;
 import com.teamproject3.vo.Member;
+import com.teamproject3.vo.PageRequest;
 import com.teamproject3.vo.QnA;
 import com.teamproject3.vo.TicketOrder;
 import com.teamproject3.vo.User;
@@ -222,7 +223,7 @@ public class MemberController {
 		int start = p.getPageBegin();
 		int end = p.getPageEnd();
 		
-		List<QnA> questions = qnAService.findAll(start, end, "all", "", "all");
+		List<QnA> questions = qnAService.findAll(start, end, new PageRequest());
 		// 해당 유저가 쓴 글만 필터링
 		List<QnA> questionList = new ArrayList<>();
 		for (QnA qna: questions) {
@@ -243,20 +244,17 @@ public class MemberController {
 			method=RequestMethod.GET,
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public Map<String, Object> getReservationList(
-			@RequestParam(value="page", defaultValue="1") int page,
-			@RequestParam(value="searchOption", defaultValue="all") String searchOption,
-			@RequestParam(value="searchValue", defaultValue="") String searchValue,
+	public Map<String, Object> getReservationList(PageRequest pageRequest,
 			@RequestParam(value="email") String email) {
 		
-		int count = ticketOrderService.count(searchOption, searchValue);
+		int count = ticketOrderService.count(pageRequest);
 		
-		Pagination p = new Pagination(page, count, 10, 3);
+		Pagination p = new Pagination(pageRequest.getPage(), count, 10, 3);
 		int start = p.getPageBegin();
 		int end = p.getPageEnd();
 		
 		// 요청한 유저의 정보만 필터링
-		List<TicketOrder> orders = ticketOrderService.findAll(start, end, searchOption, searchValue);
+		List<TicketOrder> orders = ticketOrderService.findAll(start, end, pageRequest);
 		List<TicketOrder> reservationList = new ArrayList<>();
 		for (TicketOrder order: orders) {
 			if (order.getEmail().equals(email))

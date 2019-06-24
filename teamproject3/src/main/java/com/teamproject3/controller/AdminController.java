@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,14 +20,12 @@ import com.teamproject3.service.QnAService;
 import com.teamproject3.service.TicketOrderService;
 import com.teamproject3.util.Pagination;
 import com.teamproject3.vo.Member;
+import com.teamproject3.vo.PageRequest;
 import com.teamproject3.vo.QnA;
 import com.teamproject3.vo.TicketOrder;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Controller
 @RequestMapping("/admin")
-@Slf4j
 public class AdminController {
 	
 	@Inject MemberService memberService;
@@ -53,17 +50,14 @@ public class AdminController {
 			method	=RequestMethod.GET,
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public Map<String, Object> getMemberList(
-			@RequestParam(value="page", defaultValue="1") int page,
-			@RequestParam(value="searchOption", defaultValue="all") String searchOption,
-			@RequestParam(value="searchValue", defaultValue="") String searchValue){
+	public Map<String, Object> getMemberList(PageRequest pageRequest){
 		
-		int memberCount = memberService.count(searchOption, searchValue);
+		int memberCount = memberService.count(pageRequest);
 		// 페이징 Pagination(표시하고자 하는 페이지 번호, 총 멤버 수, 한 페이지당 표시할 멤버 수, 한 블럭당 표시할 페이지의 수)
-		Pagination p = new Pagination(page, memberCount, 10, 3);
+		Pagination p = new Pagination(pageRequest.getPage(), memberCount, 10, 3);
 		int start = p.getPageBegin();
 		int end = p.getPageEnd();
-		List<Member> members = memberService.findAll(start, end, searchOption, searchValue);
+		List<Member> members = memberService.findAll(start, end, pageRequest);
 		
 		// 대상에서 관리자 권한의 계정은 제외한다.
 		List<Member> memberList = new ArrayList<>();
@@ -87,20 +81,15 @@ public class AdminController {
 			method=RequestMethod.GET,
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public Map<String, Object> getQuestionList(
-			Authentication auth,
-			@RequestParam(value="page", defaultValue="page") int page,
-			@RequestParam(value="searchOption", defaultValue="all") String searchOption,
-			@RequestParam(value="searchValue", defaultValue="") String searchValue,
-			@RequestParam(value="completed", defaultValue="all") String completed) {
+	public Map<String, Object> getQuestionList(PageRequest pageRequest) {
 		
-		int questionCount = qnAService.count(searchOption, searchValue, completed);
-		Pagination p = new Pagination(page, questionCount, 10, 3);
+		int questionCount = qnAService.count(pageRequest);
+		Pagination p = new Pagination(pageRequest.getPage(), questionCount, 10, 3);
 		
 		int start = p.getPageBegin();
 		int end = p.getPageEnd();
 		
-		List<QnA> QnAs = qnAService.findAll(start, end, searchOption, searchValue, completed);
+		List<QnA> QnAs = qnAService.findAll(start, end, pageRequest);
 		
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap.put("questions", QnAs);
@@ -136,18 +125,15 @@ public class AdminController {
 			method=RequestMethod.GET,
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public Map<String, Object> getReservationList(
-			@RequestParam(value="page", defaultValue="1") int page,
-			@RequestParam(value="searchOption", defaultValue="all") String searchOption,
-			@RequestParam(value="searchValue", defaultValue="") String searchValue) {
+	public Map<String, Object> getReservationList(PageRequest pageRequest) {
 		
-		int count = ticketOrderService.count(searchOption, searchValue);
+		int count = ticketOrderService.count(pageRequest);
 		
-		Pagination p = new Pagination(page, count, 10, 3);
+		Pagination p = new Pagination(pageRequest.getPage(), count, 10, 3);
 		int start = p.getPageBegin();
 		int end = p.getPageEnd();
 		
-		List<TicketOrder> reservationList = ticketOrderService.findAll(start, end, searchOption, searchValue);
+		List<TicketOrder> reservationList = ticketOrderService.findAll(start, end, pageRequest);
 		
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap.put("reservationList", reservationList);
@@ -164,7 +150,7 @@ public class AdminController {
 			produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public String getCountForMemberList() {
-		int count = memberService.count("all", "");
+		int count = memberService.count(new PageRequest());
 		return  Integer.toString(count);
 	}
 	
@@ -175,7 +161,7 @@ public class AdminController {
 			produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public String getCountForReservationList() {
-		int count = ticketOrderService.count("all", "");
+		int count = ticketOrderService.count(new PageRequest());
 		return  Integer.toString(count);
 	}
 	
@@ -186,7 +172,7 @@ public class AdminController {
 			produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public String getCountForQuestionList() {
-		int count = qnAService.count("all", "", "all");
+		int count = qnAService.count(new PageRequest());
 		return  Integer.toString(count);
 	}
 	
