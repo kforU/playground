@@ -56,7 +56,7 @@ public class AttractionController {
 		MultipartFile mf = req.getFile("attach");
 		
 		ServletContext application = req.getServletContext();
-		String path = application.getRealPath("/resources/uploadFile");
+		String path = application.getRealPath("/resources/images/uploadFile");
 			
 			
 			String userFileName = mf.getOriginalFilename();

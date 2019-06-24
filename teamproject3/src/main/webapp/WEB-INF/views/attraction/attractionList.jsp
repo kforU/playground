@@ -71,7 +71,7 @@
               				
               			</div>
               		<div class="imageContainer">
-            		<img class="card-img-top img-fluid" src="${path}/resources/uploadFile/${ attraction.attractionImage }">
+            		<img class="card-img-top img-fluid" src="${path}/resources/images/uploadFile/${ attraction.attractionImage }">
              		</div>
             		</a>
             	</div>

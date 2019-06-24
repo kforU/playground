@@ -38,7 +38,7 @@
      
       </header>
 	
-        <img class="AttractionContentimg" src="${path}/resources/uploadFile/${ attraction.attractionImage }" />
+        <img src="${path}/resources/images/uploadFile/${ attraction.attractionImage }" class="AttractionContentimg" />
       <div class="Detail contentArea">
         ${ attraction.attractionContent }
       </div>

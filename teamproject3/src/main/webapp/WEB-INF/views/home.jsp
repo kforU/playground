@@ -30,9 +30,9 @@
 	<!-- Container Start -->
 	<section class="section">
 		<div class="fotorama" data-autoplay="true" style=" max-width: 100%; height: auto;">
-			<img src="${path}/resources/images/home/hero.jpg">
-		  	<img src="${path}/resources/images/home/hero.jpg">
-		  	<img src="${path}/resources/images/home/hero.jpg">
+			<img src="${path}/resources/images/home/hero01.jpg">
+		  	<img src="${path}/resources/images/home/hero02.jpg">
+		  	<img src="${path}/resources/images/home/hero03.jpg">
 		</div>
 	</section>
 	<!-- Container End -->
@@ -60,7 +60,7 @@
 					<!-- product card -->
 	<div class="product-item bg-light">
 		<div class="card">
-		<a href="eventDetail/${ announcement.announcementNo }">
+		<a href="announcement/eventDetail/${ announcement.announcementNo }">
 			<div class="thumb-content">
 				<!-- <div class="price">$200</div> -->
 				<img class="card-img-top img-fluid" src="${ path }/resources/annNavereditor/annUpload/${ announcement.announceImage }" alt="Card image cap">
@@ -68,9 +68,6 @@
 			<div class="card-body">
 			    <h4 class="card-title">${ announcement.announceTitle }</h4>
 			    <ul class="list-inline product-meta">
-			    	<li class="list-inline-item">
-			    		<i class="fa fa-folder-open-o"></i>Electronics
-			    	</li>
 			    	<li class="list-inline-item">
 			    		<i class="fa fa-calendar"></i>26th December
 			    	</li>
@@ -131,7 +128,7 @@
 							<div class="header">
 								<h4>${ attraction.attractionName }</h4>
 							</div>
-								<img src="${path}/resources/uploadFile/${ attraction.attractionImage }" >
+								<img src="${path}/resources/images/uploadFile/${ attraction.attractionImage }" >
 							<ul class="category-list" >
 								<div class="">보러가기</div>
 							</ul>
