@@ -88,9 +88,10 @@
 
 <!-- 이후 삭제할 버튼 -->
  <div class="input-group">		
+ <div id="buttons" style='display:${ member.name eq "관리자" ? "block" : "none" }'>
  	<a class="nav-link login-button" href="attractionWrite" style="float:right;">새글 등록</a>
 </div>
-<!-- 이후 삭제할 버튼 -->
+</div>
 
 
 </section>
@@ -106,6 +107,7 @@
 <!-- Footer Bottom -->
 <jsp:include page="/WEB-INF/views/include/footer.jsp" />
 <jsp:include page="/WEB-INF/views/include/jsimport.jsp" />
+
 
 </body>
 

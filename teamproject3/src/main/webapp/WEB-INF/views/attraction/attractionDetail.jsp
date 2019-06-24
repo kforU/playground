@@ -38,7 +38,7 @@
      
       </header>
 	
-        <img class="AttractionContentimg" src="${ attraction.attractionImage }" />
+        <img class="AttractionContentimg" src="${path}/resources/uploadFile/${ attraction.attractionImage }" />
       <div class="Detail contentArea">
         ${ attraction.attractionContent }
       </div>
@@ -52,7 +52,13 @@
     <div class="margin-bottom-15">
 
     <div style="margin:auto; text-align: center;">
-	<a href="/controller/attractionDelete/${ attraction.attractionNo }" class="btn btn-transparent">삭제하기</a>
+	
+	
+	<div id="buttons" style='display:${ member.name eq "관리자" ? "block" : "none" }'>
+     	<input class="btn btn-transparent" type="button" id="deleted" value="삭제">
+    	<input class="btn btn-transparent" type="button" id="return" value="돌아가기">	
+     </div>
+	
 	</div>
 
 </div>
@@ -67,6 +73,18 @@
 <!-- Footer Bottom -->
 <jsp:include page="/WEB-INF/views/include/footer.jsp" />
 <jsp:include page="/WEB-INF/views/include/jsimport.jsp" />
+<script type="text/javascript">
+    	$(function(){
+    		
+    		$('#deleted').on('click', function(event){
+    			location.href="${ path }/attraction/attractionDelete/${ attraction.attractionNo }"
+    		});
+    		$('#return').on('click', function(event){
+    			location.href="${ path }/attraction/attractionList"
+    		})
+
+    	});
+    </script>
 
 </body>
 

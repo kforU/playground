@@ -55,118 +55,34 @@
 		</div>
 		
 		<ul class="bx">
+<c:forEach var="announcement" items="${ announcements }">
 	<li class="listyle">
-				<!-- offer 01 -->
-
 					<!-- product card -->
 	<div class="product-item bg-light">
 		<div class="card">
+		<a href="eventDetail/${ announcement.announcementNo }">
 			<div class="thumb-content">
 				<!-- <div class="price">$200</div> -->
-				<a href="">
-					<img class="card-img-top img-fluid" src="${path}/resources/images/products/products-1.jpg" alt="Card image cap">
-				</a>
+				<img class="card-img-top img-fluid" src="${ path }/resources/annNavereditor/annUpload/${ announcement.announceImage }" alt="Card image cap">
 			</div>
 			<div class="card-body">
-			    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
+			    <h4 class="card-title">${ announcement.announceTitle }</h4>
 			    <ul class="list-inline product-meta">
 			    	<li class="list-inline-item">
-			    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
+			    		<i class="fa fa-folder-open-o"></i>Electronics
 			    	</li>
 			    	<li class="list-inline-item">
-			    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
+			    		<i class="fa fa-calendar"></i>26th December
 			    	</li>
 			    </ul>
-			    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
+			   
 			</div>
+		</a>
 		</div>
 	</div>
 
 	</li>
-	<li class="listyle">
-				<!-- offer 01 -->
-
-					<!-- product card -->
-	<div class="product-item bg-light">
-		<div class="card">
-			<div class="thumb-content">
-				<!-- <div class="price">$200</div> -->
-				<a href="">
-					<img class="card-img-top img-fluid" src="${path}/resources/images/products/products-1.jpg" alt="Card image cap">
-				</a>
-			</div>
-			<div class="card-body">
-			    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
-			    <ul class="list-inline product-meta">
-			    	<li class="list-inline-item">
-			    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
-			    	</li>
-			    	<li class="list-inline-item">
-			    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
-			    	</li>
-			    </ul>
-			    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-			</div>
-		</div>
-	</div>
-
-	</li>
-	<li class="listyle">
-				<!-- offer 01 -->
-
-					<!-- product card -->
-	<div class="product-item bg-light">
-		<div class="card">
-			<div class="thumb-content">
-				<!-- <div class="price">$200</div> -->
-				<a href="">
-					<img class="card-img-top img-fluid" src="${path}/resources/images/products/products-1.jpg" alt="Card image cap">
-				</a>
-			</div>
-			<div class="card-body">
-			    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
-			    <ul class="list-inline product-meta">
-			    	<li class="list-inline-item">
-			    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
-			    	</li>
-			    	<li class="list-inline-item">
-			    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
-			    	</li>
-			    </ul>
-			    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-			</div>
-		</div>
-	</div>
-
-	</li>
-	<li class="listyle">
-				<!-- offer 01 -->
-
-					<!-- product card -->
-	<div class="product-item bg-light">
-		<div class="card">
-			<div class="thumb-content">
-				<!-- <div class="price">$200</div> -->
-				<a href="">
-					<img class="card-img-top img-fluid" src="${path}/resources/images/products/products-1.jpg" alt="Card image cap">
-				</a>
-			</div>
-			<div class="card-body">
-			    <h4 class="card-title"><a href="">11inch Macbook Air</a></h4>
-			    <ul class="list-inline product-meta">
-			    	<li class="list-inline-item">
-			    		<a href=""><i class="fa fa-folder-open-o"></i>Electronics</a>
-			    	</li>
-			    	<li class="list-inline-item">
-			    		<a href=""><i class="fa fa-calendar"></i>26th December</a>
-			    	</li>
-			    </ul>
-			    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-			</div>
-		</div>
-	</div>
-
-	</li>
+</c:forEach>	
 </ul>
 		
 		
