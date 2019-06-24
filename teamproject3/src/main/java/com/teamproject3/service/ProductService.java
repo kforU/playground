@@ -7,16 +7,12 @@ import com.teamproject3.vo.Product;
 public interface ProductService {
 
 	List<Product> findAllProduct();
+
+	List<Product> sortProductByLowPrice();
 	
-	List<Product> findToyProduct();
-
-	List<Product> findWearProduct();
-
-	List<Product> findPhrasesProduct();
-
-	List<Product> findApplianceProduct();
-
-	List<Product> findAccessoryProduct();
+	List<Product> sortProductByHighPrice();
+	
+	List<Product> findProductByCategory(String productCategory);
 	
 	List<Product> findAllProductImage(int ProductNo);
 	

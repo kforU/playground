@@ -46,11 +46,11 @@ public class ProductController {
 	}
 	
 	@RequestMapping(
-			value="/productToyList",
+			value="/productSortLowPrice",
 			method=RequestMethod.GET)
-	public String productToyList(Model model) {
+	public String productSortByLowPrice(Model model) {
 		
-		List<Product> products = productService.findToyProduct();
+		List<Product> products = productService.sortProductByLowPrice();
 		
 		model.addAttribute("products", products);
 		
@@ -58,11 +58,11 @@ public class ProductController {
 	}
 	
 	@RequestMapping(
-			value="/productWearList",
+			value="/productSortHighPrice",
 			method=RequestMethod.GET)
-	public String productWearList(Model model) {
+	public String productSortByHighPrice(Model model) {
 		
-		List<Product> products = productService.findWearProduct();
+		List<Product> products = productService.sortProductByHighPrice();
 		
 		model.addAttribute("products", products);
 		
@@ -70,40 +70,17 @@ public class ProductController {
 	}
 	
 	@RequestMapping(
-			value="/productPhrasesList",
+			value="/productCategoryList",
 			method=RequestMethod.GET)
-	public String productPhrasesList(Model model) {
+	public String productCategoryList(String productCategory, Model model) {
 		
-		List<Product> products = productService.findPhrasesProduct();
+		List<Product> products = productService.findProductByCategory(productCategory);
 		
 		model.addAttribute("products", products);
 		
-		return "product/productList";
+		return "product/productCategoryList";
 	}
 	
-	@RequestMapping(
-			value="/productApplianceList",
-			method=RequestMethod.GET)
-	public String productApplianceList(Model model) {
-		
-		List<Product> products = productService.findApplianceProduct();
-		
-		model.addAttribute("products", products);
-		
-		return "product/productList";
-	}
-	
-	@RequestMapping(
-			value="/productAccessoryList",
-			method=RequestMethod.GET)
-	public String productAccessoryList(Model model) {
-		
-		List<Product> products = productService.findAccessoryProduct();
-		
-		model.addAttribute("products", products);
-		
-		return "product/productList";
-	}
 	@RequestMapping(
 			value="/productDetail/{productNo}",
 			method=RequestMethod.GET)
@@ -230,13 +207,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping(path = "/productSearch", method = RequestMethod.GET)
-	public String productSearch(HttpServletRequest req, Model model, Product product) {
-		
-		String search = req.getParameter("search");
+	public String productSearch(String search, Model model, Product product) {
 		
 		List<Product> searchProduct = productService.searchProductByName(search);
 		
 		model.addAttribute("searchProduct", searchProduct); 
+		model.addAttribute("search", search); 
 		
 		return "/product/productResultList";
 	}
@@ -248,7 +224,5 @@ public class ProductController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 		
 	}
-	
-	
 	
 }

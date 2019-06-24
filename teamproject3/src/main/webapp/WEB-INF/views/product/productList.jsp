@@ -38,7 +38,7 @@
 									<!-- Advance Search -->
 									<div class="advance-search">
 										<form action="productSearch" method="get">
-											<div class="form-row">
+												<div class="form-row">
 												<div style="margin-left: 15px; margin-right: 15px;">
 													<input type="text" class="form-control" name="search" placeholder="검색어를 입력해주세요" style="width: 500px;">
 												</div>
@@ -53,7 +53,7 @@
 							</div>
 						</div>
 					</section>
-<section class="section-sm">
+<section class="section-sm" id="list-body">
 					<div class="container">
 							<div class="row">
 								<div class="col-md-12">
@@ -67,31 +67,31 @@
 									<div class="widget category-list">
 										<h4 class="widget-header">카테고리</h4>
 											<ul class="category-list">
-												<li><a href="productList">전체보기 </a></li>
-												<li><a href="productToyList">완구 </a></li>
-												<li><a href="productWearList">의류 </a></li>
-												<li><a href="productPhrasesList">문구 </a></li>
-												<li><a href="productApplianceList">가전 </a></li>
-												<li><a href="productAccessoryList">악세사리 </a></li>
+												<li><a href="productList">전체보기</a></li>
+												<li><a href="productCategoryList?productCategory=완구">완구 </a></li>
+												<li><a href="productCategoryList?productCategory=의류">의류 </a></li>
+												<li><a href="productCategoryList?productCategory=문구">문구 </a></li>
+												<li><a href="productCategoryList?productCategory=가전">가전 </a></li>
+												<li><a href="productCategoryList?productCategory=악세사리">악세사리 </a></li>
 											</ul>
 									</div>
 										<div class="widget product-shorting">
 											<h4 class="widget-header">정렬 조건</h4>
 											<div class="form-check">
 												<label class="form-check-label">
-													<input class="form-check-input" type="radio" name="sort" value="">
+													<input class="form-check-input" type="checkbox" id="sortRecent">
 													최근상품순
 												</label>
 											</div>
 											<div class="form-check">
 												<label class="form-check-label">
-													<input class="form-check-input" type="radio" name="sort" value="">
+													<input class="form-check-input" type="checkbox" id="sortLowPrice">
 													낮은가격순
 												</label>
 											</div>
 											<div class="form-check">
 												<label class="form-check-label">
-													<input class="form-check-input" type="radio" name="sort" value="">
+													<input class="form-check-input" type="checkbox" id="sortHighPrice">
 													높은가격순
 												</label>
 											</div>
@@ -145,19 +145,7 @@
 						</div>
 							<div class="pagination justify-content-center">
 								<nav aria-label="Page navigation example">
-									<ul class="pagination">
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-												<span class="sr-only">Previous</span>
-										</a></li>
-										<li class="page-item active"><a class="page-link"
-											href="#">1</a></li>
-										<li class="page-item"><a class="page-link" href="#">2</a></li>
-										<li class="page-item"><a class="page-link" href="#">3</a></li>
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-												<span class="sr-only">Next</span>
-										</a></li>
+									<ul class="pagination" id="pagination">
 									</ul>
 								</nav>
 							</div>
@@ -242,5 +230,24 @@
 	<jsp:include page="/WEB-INF/views/include/jsimport.jsp" />
 
 </body>
-
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#sortLowPrice").change(function(){
+        if($("#sortLowPrice").is(":checked")){
+        	location.href = "productSortLowPrice";
+        }
+    });
+    $("#sortHighPrice").change(function(){
+        if($("#sortHighPrice").is(":checked")){
+        	location.href = "productSortHighPrice";
+        }
+    });
+    $("#sortRecent").change(function(){
+        if($("#sortRecent").is(":checked")){
+        	location.href = "productList";
+        }
+    });
+});
+</script>
 </html>

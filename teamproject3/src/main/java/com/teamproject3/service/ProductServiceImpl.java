@@ -24,39 +24,10 @@ public class ProductServiceImpl implements ProductService {
 		List<Product> products = productRepository.selectAllProduct();
 		return products;
 	}
-
-	@Override
-	public List<Product> findToyProduct() {
-		
-		List<Product> products = productRepository.selectToyProduct();
-		return products;
-	}
 	
 	@Override
-	public List<Product> findWearProduct() {
-		
-		List<Product> products = productRepository.selectWearProduct();
-		return products;
-	}
-
-	@Override
-	public List<Product> findPhrasesProduct() {
-
-		List<Product> products = productRepository.selectPhrasesProduct();
-		return products;
-	}
-
-	@Override
-	public List<Product> findApplianceProduct() {
-
-		List<Product> products = productRepository.selectApplianceProduct();
-		return products;
-	}
-
-	@Override
-	public List<Product> findAccessoryProduct() {
-
-		List<Product> products = productRepository.selectAccessoryProduct();
+	public List<Product> findProductByCategory(String productCategory) {
+		List<Product> products = productRepository.selectProductByCategory(productCategory);
 		return products;
 	}
 	
@@ -111,6 +82,20 @@ public class ProductServiceImpl implements ProductService {
 		List<Product> searchProduct = productRepository.searchProductByName(search);
 		
 		return searchProduct;
+	}
+
+	@Override
+	public List<Product> sortProductByLowPrice() {
+		
+		List<Product> products = productRepository.sortProductByLowPrice();
+		return products;
+	}
+
+	@Override
+	public List<Product> sortProductByHighPrice() {
+		
+		List<Product> products = productRepository.sortProductByHighPrice();
+		return products;
 	}
 	
 }

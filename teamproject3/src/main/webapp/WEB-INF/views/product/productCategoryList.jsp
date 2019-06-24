@@ -38,9 +38,9 @@
 									<!-- Advance Search -->
 									<div class="advance-search">
 										<form action="productSearch" method="get">
-											<div class="form-row">
+												<div class="form-row">
 												<div style="margin-left: 15px; margin-right: 15px;">
-													<input type="text" class="form-control" name="search" id="inputtext4" placeholder="검색어를 입력해주세요" style="width: 500px;">
+													<input type="text" class="form-control" name="search" placeholder="검색어를 입력해주세요" style="width: 500px;">
 												</div>
 												<div class="form-group col-md-2"
 													style="margin-left: 15px; margin-right: 15px;">
@@ -53,19 +53,18 @@
 							</div>
 						</div>
 					</section>
-<section class="section-sm">
-<c:forEach var="product" items="${ searchProduct }">
+<section class="section-sm" id="list-body">
 					<div class="container">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="search-result bg-gray">
-									<h2 id ="searchResult"></h2>
 									</div>
 								</div>
 							</div>
 						<div class="row">
 							<div class="col-md-3">
 								<div class="category-sidebar">
+									<form action="productList" method="get">
 									<div class="widget category-list">
 										<h4 class="widget-header">카테고리</h4>
 											<ul class="category-list">
@@ -77,6 +76,7 @@
 												<li><a href="productCategoryList?productCategory=악세사리">악세사리 </a></li>
 											</ul>
 									</div>
+									</form>
 										<div class="widget product-shorting">
 											<h4 class="widget-header">정렬 조건</h4>
 											<div class="form-check">
@@ -103,7 +103,7 @@
 								<div class="col-md-9">
 									<div class="product-grid-list">
 										<div class="row mt-30">
-											
+											<c:forEach var="product" items="${ products }">
 												<div class="col-sm-12 col-lg-4 col-md-6">
 													<!-- product card -->
 													<div class="product-item bg-light">
@@ -139,7 +139,7 @@
 														</div>
 													</div>
 												</div>
-											
+											</c:forEach>
 										</div>
 									</div>
 								</div>
@@ -147,7 +147,7 @@
 						</div>
 							<div class="pagination justify-content-center">
 								<nav aria-label="Page navigation example">
-									<ul class="pagination">
+									<ul class="pagination" id="pagination">
 									</ul>
 								</nav>
 							</div>
@@ -158,7 +158,6 @@
 							</c:if>
 						</div>
 				</div>
-</c:forEach>
 </section>
 <!--============================
 =            Footer            =
@@ -233,10 +232,8 @@
 	<jsp:include page="/WEB-INF/views/include/jsimport.jsp" />
 
 </body>
-
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script type="text/javascript">
-$("#searchResult").html('${search} (으)로 검색한 결과입니다.');
 $(document).ready(function(){
     $("#sortLowPrice").change(function(){
         if($("#sortLowPrice").is(":checked")){
@@ -255,5 +252,4 @@ $(document).ready(function(){
     });
 });
 </script>
-
 </html>

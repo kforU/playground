@@ -12,50 +12,30 @@
 		WHERE deleted = '0'
 		ORDER BY productNo DESC
 	</select>
-
-	<select id="selectToyProduct" 
+	
+	<select id="selectProductByCategory" 
 			resultType="com.teamproject3.vo.Product">
 		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
 		FROM PRODUCT
 		WHERE deleted = '0'
-		AND productCategory = '완구'
-		ORDER BY productNo DESC
-	</select>
-
-	<select id="selectWearProduct" 
-			resultType="com.teamproject3.vo.Product">
-		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
-		FROM PRODUCT
-		WHERE deleted = '0'
-		AND productCategory = '의류'
-		ORDER BY productNo DESC
-	</select>
-
-	<select id="selectPhrasesProduct" 
-			resultType="com.teamproject3.vo.Product">
-		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
-		FROM PRODUCT
-		WHERE deleted = '0'
-		AND productCategory = '문구'
-		ORDER BY productNo DESC
-	</select>
-
-	<select id="selectApplianceProduct" 
-			resultType="com.teamproject3.vo.Product">
-		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
-		FROM PRODUCT
-		WHERE deleted = '0'
-		AND productCategory = '가전'
+		AND productCategory = #{ productCategory }
 		ORDER BY productNo DESC
 	</select>
 	
-	<select id="selectAccessoryProduct" 
+	<select id="sortProductByLowPrice" 
 			resultType="com.teamproject3.vo.Product">
 		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
 		FROM PRODUCT
 		WHERE deleted = '0'
-		AND productCategory = '악세사리'
-		ORDER BY productNo DESC
+		ORDER BY productPrice ASC
+	</select>
+	
+	<select id="sortProductByHighPrice" 
+			resultType="com.teamproject3.vo.Product">
+		SELECT productNo, productName, productContent, productCount, productImage, productPrice, deleted, productCategory, regDate
+		FROM PRODUCT
+		WHERE deleted = '0'
+		ORDER BY productPrice DESC
 	</select>
 	
 	<select id="selectOneProductNo"

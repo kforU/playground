@@ -7,16 +7,12 @@ import com.teamproject3.vo.Product;
 public interface ProductMapper {
 
 	List<Product> selectAllProduct();	// 상품 목록
-
-	List<Product> selectToyProduct();
 	
-	List<Product> selectWearProduct();
+	List<Product> sortProductByLowPrice();
 	
-	List<Product> selectPhrasesProduct();
+	List<Product> sortProductByHighPrice();
 	
-	List<Product> selectApplianceProduct();
-	
-	List<Product> selectAccessoryProduct();
+	List<Product> selectProductByCategory(String productCategory);
 	
 	List<Product> selectAllProductImage(int productNo);
 	
