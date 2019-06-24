@@ -63,9 +63,9 @@
 			        
 			         <span> 아이 </span>
 			        <input name="kidPrice" type="number" value="46000" min="0" max="10000000" step="46000"/>
-			        
 			        <br>
-			        
+			        <br>
+			       
 			        <!-- <a href="/playground/ticket/payment" class='.button'>결제</a> -->
 			        <input type="submit" value="구매">
 			        </form>
@@ -97,7 +97,7 @@
 			        
 			         <span> 아이 </span>
 			        <input name="kidPrice" type="number" value="46000" min="0" max="10000000" step="46000"/>
-			        
+			        <br>
 			        <br>
 			        
 			        <!-- <a href="/playground/ticket/payment" class='.button'>결제</a> -->
@@ -130,7 +130,7 @@
 			        
 			         <span> 아이 </span>
 			        <input name="kidPrice" type="number" value="46000" min="0" max="10000000" step="46000"/>
-			        
+			        <br>
 			        <br>
 			        
 			        <!-- <a href="/playground/ticket/payment" class='.button'>결제</a> -->
@@ -162,7 +162,7 @@
 			        
 			         <span> 아이 </span>
 			        <input name="kidPrice" type="number" value="46000" min="0" max="10000000" step="46000"/>
-			        
+			        <br>
 			        <br>
 			        
 			        <!-- <a href="/playground/ticket/payment" class='.button'>결제</a> -->
