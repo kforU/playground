@@ -107,6 +107,8 @@ public class AttractionController {
 		
 	}
 	
+	
+	//delete 작업
 	@RequestMapping( value = "/attractionDelete/{attractionNo}", method=RequestMethod.GET)
 	public String attractionDelete(@PathVariable int attractionNo ) {
 		

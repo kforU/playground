@@ -70,11 +70,9 @@
               				<h4>${ attraction.attractionName }</h4>
               				
               			</div>
-            		<img class="card-img-top img-fluid" 
-             			 src="${path}/resources/uploadFile/nullImage.jpg"
-            		>
-            		<!-- src="/resources/uploadFile/${ attraction.attractionImage }" > -->
-            			
+              		<div class="imageContainer">
+            		<img class="card-img-top img-fluid" src="${path}/resources/uploadFile/${ attraction.attractionImage }">
+             		</div>
             		</a>
             	</div>
            	</c:forEach>
