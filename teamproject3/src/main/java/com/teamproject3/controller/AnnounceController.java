@@ -129,7 +129,7 @@ public class AnnounceController {
 		
 		announcementService.deletedByNo(announcementNo);
 		
-		return "home";
+		return "announcement/announce";
 	}
 	
 	@RequestMapping(path="delete-file/{announcementNo}/{fileNo}", 
@@ -298,5 +298,13 @@ public class AnnounceController {
 	public String FAQpage() {
 		
 		return "announcement/FAQpage";
+	}
+	
+	@RequestMapping(path="eventdelete/{announcementNo}", method=RequestMethod.GET)
+	public String eventDelete(@PathVariable int announcementNo) {
+		
+		announcementService.deletedByNo(announcementNo);
+		
+		return "announcement/eventpage";
 	}
 }
